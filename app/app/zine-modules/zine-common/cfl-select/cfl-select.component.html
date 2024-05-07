@@ -1,0 +1,17 @@
+<form [formGroup]="cflForm" *ngIf="cflForm">
+    <ng-select
+    #select
+    formControlName="code"
+    [bindValue]="bindValue"
+    [bindLabel]="bindLabel"
+    [items]="items"
+    [loading]="loading"
+    [virtualScroll]="true"
+    [searchable]="true"
+    (search)="onSearch($event)"
+    (scroll)="onScroll($event)"
+    (scrollToEnd)="onScrollToEnd(select.searchTerm)"
+    (change)="onChange($event)"
+    >
+    </ng-select>
+</form>
