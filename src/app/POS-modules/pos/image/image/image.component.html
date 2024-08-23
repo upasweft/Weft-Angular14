@@ -1,0 +1,32 @@
+<form [formGroup]="resourceForm" *ngIf="resourceForm">
+    <div>
+        <input type="text"  formControlName="qrCode" placeholder="Enter QrCode Here"
+        (keyup.enter)="onEnterKeyPressed()">
+    </div>
+    <div class="col-lg-6 editor_buttons">
+        <div class="col-12">
+            <div class="card-footer">
+                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                    <!-- *ngIf="this.hideSubmitFromBranchUser == false" -->
+                    <!-- <a href="#0" class="active">
+                        <button class="font-18 btn-danger font-medium mb-0"
+                            (click)="cancel()" title="Cancel"><i
+                                class="bi bi-x"></i></button>
+                    </a> -->
+                    <!-- <a href="#0" class="active">
+                        <button class="font-18 btn-primary font-medium mb-0"
+                            (click)="reset()" title="Reset"><i
+                                class="bi bi-arrow-repeat"></i></button>
+                    </a> -->
+
+                    <a href="#0" class="active">
+                        <button class="font-18 btn-success font-medium mb-0"
+                            (click)="onSubmit()" title="Submit"><i
+                                class="bi bi-check2"></i></button>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

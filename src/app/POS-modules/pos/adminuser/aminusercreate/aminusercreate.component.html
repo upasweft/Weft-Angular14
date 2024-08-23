@@ -1,0 +1,108 @@
+<form [formGroup]="resourceForm" *ngIf="resourceForm">
+    <div class="col-12 head-card page-head">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+                <h3 class="card-title common-title mb-0">Admin</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-0 common-f-size myCard">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 mt-3 each-input-box">
+                    <label>Name</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="name"
+                        placeholder="Enter Name" (change)="changeTextToUppercase('name')" pattern="[A-Za-z ]*" title="Only alphabetic characters are allowed">
+                    <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                        <div *ngIf="f['name'].errors?.['required']">Name is required</div>
+<div *ngIf="f['name'].errors?.['maxlength']">Name length should be less than 150</div>
+<div *ngIf="f['name'].errors?.['pattern']">Only alphabetic characters are allowed</div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3 each-input-box">
+                    <label>Prefix</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="prefix"
+                        placeholder="Enter Prefix" (change)="changeTextToUppercase('prefix')" pattern="[A-Za-z ]*" title="Only alphabetic characters are allowed" [readonly]="editted">
+                    <div *ngIf="submitted && f['prefix'].errors" class="invalid-feedback">
+                        <div *ngIf="f['prefix'].errors?.['required']">Prefix is required</div>
+                        <div *ngIf="f['prefix'].errors?.['maxlength']">Prefix length should be less than 2</div>
+                        <div *ngIf="f['prefix'].errors?.['pattern']">Only alphabetic characters are allowed</div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3 each-input-box">
+                    <label>Email</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="email"
+                        placeholder="Enter Email" [readonly]="editted">
+                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+                        <div *ngIf="f['email'].errors?.['maxlength']">Email length should be less than 50</div>
+                        <div *ngIf="f['email'].errors?.['pattern']">Invalid email</div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3 each-input-box">
+                    <label>User Type</label>
+                    <ng-select class="select-mandatory" #select formControlName="userType"
+                        bindValue="id" bindLabel="name" [items]="userTypes"
+                        placeholder="Select User Type" (change)="onUserTypeSelect($event)"> </ng-select>
+                        <div *ngIf="submitted && f['userType'].errors">
+                        <div *ngIf="submitted && f['userType'].errors?.['required']">User Type is required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3 each-input-box">
+                    <label>Site Name</label>
+                    <ng-select class="select-mandatory" #select formControlName="siteSettingId"
+                        bindValue="siteSettingId" bindLabel="siteName" [items]="sites"
+                        placeholder="Select Site Name" (change)="onSiteSelect($event)"> </ng-select>
+                        <div *ngIf="submitted && f['siteSettingId'].errors">
+                            <div *ngIf="f['siteSettingId'].errors?.['required']">Site Name is required</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3 each-input-box">
+                    <label>Phone</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="phone"
+                        placeholder="Enter Phone">
+                    <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+                        <div *ngIf="f['phone'].errors?.['required']">Phone is required</div>
+                        <div *ngIf="f['phone'].errors?.['maxlength']">Phone length should be 13</div>
+                        <div *ngIf="f['phone'].errors?.['minlength']">Phone length should be 13</div>
+                        <div *ngIf="f['phone'].errors?.['pattern']">Enter only '+' and numbers</div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3 each-input-box" [hidden]="editted">
+                    <label>Password</label>
+                    <input formControlName="password" type="password" class="form-control"
+                        placeholder="Enter Password">
+                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+                        <div *ngIf="f['password'].errors?.['maxlength']">Password length should be less than or equal to 10</div>
+                        <div *ngIf="f['password'].errors?.['minlength']">Password length should be greater than or equal to 8</div>
+                        <div *ngIf="f['password'].errors?.['pattern']">Password must contain at least one number, one special character, and one uppercase and lowercase letter, and be at least 8 characters long</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3 form-group form-check">
+                    <label>Is Active</label> <br>
+                    <div class="custom-checkbox icheck">
+                        <input type="checkbox" formControlName="status" class="mt-3" checked="checked">
+                        <span class="checkmark"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card-footer p-3">
+                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                    </a>
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="onSubmit()">Submit</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

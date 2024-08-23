@@ -1,0 +1,50 @@
+<form [formGroup]="resourceForm" *ngIf="resourceForm"> 
+    <div class="col-12 head-card page-head ">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+                <h3 class="card-title common-title mb-0">User Report</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-0 common-f-size myCard">
+        <div class="card-body">
+            <div class="row">
+               
+                
+                <div class="col-md-4 mt-0 mb-2 each-input-box">
+                    <label>User Type</label>
+                    <ng-select class="select-mandatory" #select formControlName="userType"
+                        bindValue="id" bindLabel="name" [items]="userTypes"
+                        placeholder="--SELECT USER TYPE--" (change)="onUserTypeSelect($event)"> </ng-select>
+                    <div *ngIf="submitted == true && f.userType.errors" class="invalid-feedback">
+                        <div *ngIf="f.userType.errors.required">User Type is required</div>
+                    </div>
+                </div> 
+                <div class="col-md-4 mt-0 mb-2 each-input-box">
+                    <label>Site Name</label>
+                    <ng-select class="select-mandatory" #select formControlName="siteSettingsId"
+                        bindValue="siteSettingId" bindLabel="siteName" [items]="sites"
+                        placeholder="Select Site Name" (change)="onSiteSelect($event)"> </ng-select>
+                    <div *ngIf="submitted == true && f.siteSettingId.errors" class="invalid-feedback">
+                        <div *ngIf="f.siteSettingId.errors.required">Site Name is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card-footer p-3">
+                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                    <!-- *ngIf="this.hideSubmitFromBranchUser == false" -->
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                    </a>
+                    <a href="#0" class="active" >
+                        <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="onSubmit()">Show</button>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div> 
+
+</form>

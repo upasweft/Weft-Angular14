@@ -1,0 +1,81 @@
+<!-- <app-grid-management
+[title]='title'
+[getGridDataApi]='getGridDataApi'
+[columnDefs]="columnDefs"
+[customizeColumns]="customizeColumns"
+[isReport]="true"
+[paramsForReport]="resourceKeyValue"
+(transferData)="transferData($event)"
+>
+</app-grid-management> -->
+
+<form [formGroup]="gridManagementForm" *ngIf="gridManagementForm">
+    <div class="col-12 pr-5 pl-5 d-flex justify-content-between flex-wrap dashboard-right-wrap">
+        <div class="col-12 head-card page-head">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-8">
+                    <h3 class="card-title common-title mb-0">{{ title }}</h3>
+                </div> 
+              
+            </div> 
+        </div>
+
+        <div class="col-12 each-input-box">
+            <dx-button id="exportButton" icon="exportpdf" text="Export to PDF" (onClick)="generatePDF($event)">
+            </dx-button>
+            <dx-data-grid id="gridContainer" #grid [dataSource]="dataSource" [showBorders]="true"
+            [customizeColumns]="customizeColumns">
+                <dxo-export [enabled]="true" [printingEnabled]="true" fileName="{{title}}"></dxo-export>
+                <dxi-column caption="Item" dataField="item"></dxi-column>
+            <dxi-column dataField="Site Name" dataField="siteName"></dxi-column>
+            <dxi-column caption="Doc Date" dataField="docDate">
+                <dxo-format type="date" format="dd/MM/yyyy"></dxo-format>
+              </dxi-column>
+            <dxi-column caption="Doc No" dataField="docNo"></dxi-column>
+            <dxi-column dataField="inQty" caption="Received Qty"></dxi-column>
+            <dxi-column dataField="outQty" caption="Issued Qty"></dxi-column>
+            <dxi-column dataField="remarks" caption="Stock Type"></dxi-column>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxo-search-panel [visible]="true"></dxo-search-panel>
+
+                <dxo-summary [calculateCustomSummary]="calculateCustomSummary" >
+                
+                     <dxi-total-item column="credit" name="credit" summaryType="sum" [customizeText]="customizeCaptionAmount">
+                    </dxi-total-item>
+                
+                    <dxi-total-item column="docTotal" name="docTotal" summaryType="sum" [customizeText]="customizeCaptionAmount">
+                    </dxi-total-item> 
+                    
+                    <dxi-total-item
+                    name="SelectedRowsSummary"
+                    summaryType="custom"
+                    [customizeText]="customizeCaptionClosingBalance"
+                    showInColumn="docNo"
+                  >
+                  </dxi-total-item>
+                      
+                </dxo-summary>
+                
+                <!-- <dxo-summary>
+
+                    <dxi-group-item column="refNum" summaryType="count" [customizeText]="customizeCaptionAmount"
+                        [showInGroupFooter]="true">
+                    </dxi-group-item>
+
+                    <dxi-group-item column="docTotal" summaryType="sum" [customizeText]="customizeCaptionAmount"
+                        [showInGroupFooter]="true">
+                    </dxi-group-item>
+
+                    <dxi-group-item column="credit" summaryType="sum" [customizeText]="customizeCaptionAmount"
+                        [showInGroupFooter]="true">
+                    </dxi-group-item>
+                </dxo-summary> -->
+
+                <dxo-paging [pageSize]="10">
+                </dxo-paging>
+                <dxo-pager [visible]="true" [showNavigationButtons]="true" [showInfo]="true">
+                </dxo-pager>
+            </dx-data-grid>
+        </div>
+    </div>
+</form>  

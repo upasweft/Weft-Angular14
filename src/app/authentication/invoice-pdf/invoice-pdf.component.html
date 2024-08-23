@@ -1,0 +1,52 @@
+<html>
+<head>
+   
+   
+</head>
+<body>
+    <button class="font-18 font-medium mb-3 mb-sm-0 dwnload_btn" (click)="generatePDF()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+      </svg><span>Download</span> </button>
+    <div id="printInvDataA4" class="invoice">
+        <div class="invoicemain-head">
+
+        </div>
+        <div class="invoiceheader">
+            <h1>Invoice</h1>
+            <!-- <p>Date: {{ currentDate }}</p> -->
+        </div>
+        <div class="invoice-details d-flex justify-content-between">
+            <div>
+                <p>From:</p>
+                <p>Your Company Name</p>
+                <p>Your Address</p>
+                <p>Your City, Country</p>
+            </div>
+            <div>
+                <p>To:</p>
+                <p>Customer Name</p>
+                <p>Customer Address</p>
+                <p>Customer City, Country</p>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item">
+                <span>Item 1</span>
+                <span>$100.00</span>
+            </div>
+            <div class="item">
+                <span>Item 2</span>
+                <span>$50.00</span>
+            </div>
+            <!-- Add more items as needed -->
+        </div>
+        <div class="total">
+            <p>Discount: $150.00</p>
+            <p>Discount: $150.00</p>
+            <p>Total: $150.00</p>
+        </div>
+    </div>
+</body>
+</html>
+

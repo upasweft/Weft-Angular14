@@ -1,0 +1,548 @@
+<div class="accordion" id="accordionExample">
+   <div class="category accordion-item">
+      <h2 class="accordion-header" id="Dashicon">
+         <button class="accordion-button no_submenu" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne" routerLinkActive="active-link">
+            <span class="categoryIcon me-2"><i class="bi bi-grid-1x2-fill"></i></span>
+            <span class="categoryLabel" routerLink="/report/dashboard" >Dashboard</span>
+            <div class="countDiv">
+               <!-- <span class="count">1</span> -->
+               <!-- <span class="dwnicon"><img src="assets/images/icons-dashboard/dwnarrw.png" alt=""></span> -->
+            </div>
+         </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="Dashicon"
+         data-bs-parent="#accordionExample">
+         <!-- <div class="accordion-body">
+                  <div class="subList">
+                      <div class="subItem">
+                          <span class="subItemIcon"><img src="assets/images/icons-dashboard/pic1.png" alt=""></span>
+                          <span class="subItemLabel">Bess Atkins</span>
+                          <span class="statusIcon">Active</span>
+                      </div>
+                      <div class="subItem">
+                          <span class="subItemIcon"><img src="assets/images/icons-dashboard/pic1.png" alt=""></span>
+                          <span class="subItemLabel">Bess Atkins</span>
+                          <span class="statusIcon">Active</span>
+                      </div>
+                      <div class="subItem">
+                          <span class="subItemIcon"><img src="assets/images/icons-dashboard/pic1.png" alt=""></span>
+                          <span class="subItemLabel">Bess Atkins</span>
+                          <span class="statusIcon">Active</span>
+                      </div>
+                      <div class="subItem">
+                          <span class="subItemIcon"><img src="assets/images/icons-dashboard/pic1.png" alt=""></span>
+                          <span class="subItemLabel">Bess Atkins</span>
+                          <span class="statusIcon">Active</span>
+                      </div>
+                      <div class="subItem">
+                          <span class="subItemIcon"><img src="assets/images/icons-dashboard/pic1.png" alt=""></span>
+                          <span class="subItemLabel">Bess Atkins</span>
+                          <span class="statusIcon">Active</span>
+                      </div>
+                      <div class="subItem">
+                          <span class="subItemIcon"><img src="assets/images/icons-dashboard/pic1.png" alt=""></span>
+                          <span class="subItemLabel">Bess Atkins</span>
+                          <span class="statusIcon">Active</span>
+                      </div>
+                  </div>
+              </div> -->
+      </div>
+   </div>
+   <div class="category accordion-item" >
+      <h2 class="accordion-header" id="tags">
+         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsenine"
+            aria-expanded="true" aria-controls="collapsenine">
+            <span class="categoryIcon me-2"><i class="bi bi-gear-wide-connected"></i></span>
+            <span class="categoryLabel">Settings</span>
+            <div class="countDiv">
+               <!-- <span class="count">1</span> -->
+               <span class="dwnicon"><img src="assets/images/icons-dashboard/dwnarrw.png" alt=""></span>
+            </div>
+         </button>
+      </h2>
+      <div id="collapsenine" class="accordion-collapse collapse" aria-labelledby="pages"
+         data-bs-parent="#accordionExample"  >
+         <div class="accordion-body">
+            <div class="subList">
+
+               <div class="subItem" *ngIf="this.groupId == 1">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/groupaccess-create">Group Access</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="siteSettingsFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/sitesettings-management">Site Settings</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="backgroundImageDataFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/backgroundImage">Background Image</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="backgroundImageDataFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/video">Video Upload</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="backgroundImageDataFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/face">Face Image Upload</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="qrCodeFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/qrCodeManagement">Qr Code</span>
+   
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="qrCodeMergeFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/qrCodeMerge">Merge Qr Code</span>
+   
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+              
+            </div>
+           
+               
+            <!-- </div> -->
+         </div>
+      </div>
+   </div>
+
+   <div class="category accordion-item" *ngIf="editingFlag">
+      <h2 class="accordion-header" id="pages">
+         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseedit"
+            aria-expanded="true" aria-controls="collapseedit">
+            <span class="categoryIcon me-2"><i class="bi bi-gear-wide-connected"></i></span>
+            <span class="categoryLabel">Editing</span>
+            <div class="countDiv">
+               <!-- <span class="count">1</span> -->
+               <span class="dwnicon"><img src="assets/images/icons-dashboard/dwnarrw.png" alt=""></span>
+            </div>
+         </button>
+      </h2>
+      <div id="collapseedit" class="accordion-collapse collapse" aria-labelledby="pages"
+         data-bs-parent="#accordionExample">
+         <div class="accordion-body">
+            <div class="subList">
+
+               <div class="subItem" *ngIf="imageEditFlag" >
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/imageedit-create">Image Edit</span>
+
+                 
+               </div>
+               <div class="subItem" *ngIf="imageEditFlag" >
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/videoEdit">Video Edit</span>
+
+                 
+               </div>
+               <div class="subItem" *ngIf="viewImageFlag" >
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/viewImage">View Image</span>
+
+                 
+               </div>
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="category accordion-item" *ngIf="cmsFlag">
+      <h2 class="accordion-header" id="pages">
+         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsecms"
+            aria-expanded="true" aria-controls="collapsecms">
+            <span class="categoryIcon me-2"><i class="bi bi-gear-wide-connected"></i></span>
+            <span class="categoryLabel">CMS Settings</span>
+            <div class="countDiv">
+               <!-- <span class="count">1</span> -->
+               <span class="dwnicon"><img src="assets/images/icons-dashboard/dwnarrw.png" alt=""></span>
+            </div>
+         </button>
+      </h2>
+      <div id="collapsecms" class="accordion-collapse collapse" aria-labelledby="pages"
+         data-bs-parent="#accordionExample">
+         <div class="accordion-body">
+            <div class="subList">
+
+               <div class="subItem" *ngIf="bannerSettingsDataFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/bannerSettings">Banner Settings</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="aboutusDataFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/aboutus">About Us</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="contactusDataFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/contactus">Contact Us</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="privacypolicyDataFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/privacypolicy">Privacy Policy</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="userguidanceDataFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/userGuidance">User Guidance</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="termsandconditionsDataFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/termsandconditions">Terms And Conditions</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="category accordion-item" *ngIf="userSettingFlag">
+      <h2 class="accordion-header" id="pages">
+         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsetwo"
+            aria-expanded="true" aria-controls="collapseOne">
+            <span class="categoryIcon me-2"><i class="bi bi-people-fill"></i></span>
+            <span class="categoryLabel">Users</span>
+            <div class="countDiv">
+               <!-- <span class="count">1</span> -->
+               <span class="dwnicon"><img src="assets/images/icons-dashboard/dwnarrw.png" alt=""></span>
+            </div>
+         </button>
+      </h2>
+      <div id="collapsetwo" class="accordion-collapse collapse" aria-labelledby="pages"
+         data-bs-parent="#accordionExample">
+         <div class="accordion-body">
+            <div class="subList">
+
+               <div class="subItem" *ngIf="this.adminuserFlag == true">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/adminusers-management">Admin Users</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+
+               <div class="subItem" *ngIf="userFlag">
+
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/users-management">Users</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+   <div class="category accordion-item" *ngIf="productSettingFlag">
+      <h2 class="accordion-header" id="categories">
+         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesix"
+            aria-expanded="true" aria-controls="collapseOne">
+            <span class="categoryIcon me-2"><i class="bi bi-gear-fill"></i></span>
+            <span class="categoryLabel">Product Settings</span>
+            <div class="countDiv">
+               <!-- <span class="count">1</span> -->
+               <span class="dwnicon"><img src="assets/images/icons-dashboard/dwnarrw.png" alt=""></span>
+            </div>
+         </button>
+      </h2>
+      <div id="collapsesix" class="accordion-collapse collapse" aria-labelledby="categories"
+         data-bs-parent="#accordionExample">
+         <div class="accordion-body">
+            <div class="subList">
+               <div class="subItem" *ngIf="categoryFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/category-management">Categories</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <!-- <div class="subItem" *ngIf="subcategoryFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/subcategory-management">Sub Categories</span>
+                   <span class="statusIcon">Active</span> 
+               </div> -->
+               <div class="subItem" *ngIf="productFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/product-management">Products</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="stockFlag">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/admin/Stock-adjustment">Stock Adjustment</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="category accordion-item"  >
+      <h2 class="accordion-header" id="tags">
+         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseseven"
+            aria-expanded="true" aria-controls="collapseOne">
+            <span class="categoryIcon me-2"><i class="bi bi-file-earmark-text"></i></span>
+            <span class="categoryLabel" >Invoice</span>
+            <div class="countDiv">
+               <!-- <span class="count">1</span> -->
+               <span class="dwnicon"><img src="assets/images/icons-dashboard/dwnarrw.png" alt=""></span>
+            </div>
+         </button>
+      </h2>
+      <div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="pages"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+         <div class="subList">
+
+            <div class="subItem" >
+               <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+               <span class="subItemLabel" routerLink="/admin/invoice-management">Invoice</span>
+
+               <!-- <span class="statusIcon">Active</span> -->
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   <div class="category accordion-item" *ngIf="reportSettingsFlag">
+      <h2 class="accordion-header" id="tags">
+         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseeight"
+            aria-expanded="true" aria-controls="collapseOne">
+            <span class="categoryIcon me-2"><i class="bi bi-receipt"></i></span>
+            <span class="categoryLabel">Report</span>
+            <div class="countDiv">
+               <!-- <span class="count">1</span> -->
+               <span class="dwnicon"><img src="assets/images/icons-dashboard/dwnarrw.png" alt=""></span>
+            </div>
+         </button>
+      </h2>
+      <div id="collapseeight" class="accordion-collapse collapse" aria-labelledby="pages"
+         data-bs-parent="#accordionExample">
+         <div class="accordion-body">
+            <div class="subList">
+
+               <div class="subItem" *ngIf="this.userReportFlag == true">
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/report/users-report">Users Report</span>
+
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+
+               <div class="subItem" *ngIf="this.productReportFlag == true">
+
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/report/product-report">Item Report</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="this.salesReportFlag == true">
+
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/report/sales-report">Sales Report</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="this.vatReportFlag == true">
+
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/report/vat-report">VAT Report</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+
+               <div class="subItem" *ngIf="this.dailySalesReportFlag == true">
+
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/report/dailysales-report">Daily Sales Report</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="this.stockReportFlag == true">
+
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/report/stock-report">Stock Report</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="this.voidDataFlag == true">
+
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/report/void-report">Void Report</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="this.monthlyDataFlag == true">
+
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/report/monthlysummary-report">Monthly Summary Report</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+               <div class="subItem" *ngIf="this.usedQrCodeReportFlag == true">
+
+                  <span class="subItemIcon"><img src="assets/images/dot.png" alt=""></span>
+                  <span class="subItemLabel" routerLink="/report/usedqrcode-report">Used Qr Code</span>
+                  <!-- <span class="statusIcon">Active</span> -->
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+</div>
+<!-- <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+
+         <ul>
+
+            <li *ngIf="this.adminuserFlag == true">
+               <a routerLink="/admin/adminusers-management" routerLinkActive="active" replaceUrl=true>
+                  <span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person" viewBox="0 0 16 16">
+                        <path
+                           d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                     </svg>
+                  </span>
+                  Admin User
+               </a>
+            </li>
+            <li *ngIf="this.userFlag == true">
+               <a routerLink="/admin/users-management" routerLinkActive="active" replaceUrl=true>
+                  <span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-people" viewBox="0 0 16 16">
+                        <path
+                           d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
+                     </svg>
+                  </span>
+                  User
+               </a>
+
+            </li>
+
+            <li *ngIf="categoryFlag">
+               <a routerLink="/admin/category-management" routerLinkActive="active" replaceUrl=true>
+                  <span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person" viewBox="0 0 16 16">
+                        <path
+                           d="M8 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4-4a4 4 0 1 0-8 0 4 4 0 0 0 8 0zM0 14c0-2.985 2.168-5.71 5-6.501v-1.326C2.388 6.072.5 9.1.5 12.5c0 .78.162 1.53.469 2.211C1.848 15.396 4.073 16 7 16s5.152-.604 6.031-1.289A7.607 7.607 0 0 1 15.5 12.5c0-3.4-1.888-6.428-4.648-8.327v1.326C13.832 8.29 16 11.015 16 14H0z" />
+                     </svg>
+                  </span>
+                  Category
+               </a>
+            </li>
+
+            <li *ngIf="subcategoryFlag">
+               <a routerLink="/admin/subcategory-management" routerLinkActive="active" replaceUrl=true>
+                  <span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-list-task" viewBox="0 0 16 16">
+                        <path
+                           d="M0 3.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.5v.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-.5H.5a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-10zm1 1v9h8v-9H4z" />
+                     </svg>
+                  </span>
+                  Sub Category
+               </a>
+            </li>
+            <li *ngIf="productFlag">
+               <a routerLink="/admin/product-management" routerLinkActive="active" replaceUrl=true>
+                  <span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bag-check" viewBox="0 0 16 16">
+                        <path
+                           d="M12.293 5.293l-4-4A1 1 0 0 0 7 1H5a1 1 0 0 0-1 1v2.586L.293 7.293a1 1 0 0 0 0 1.414l4 4a1 1 0 0 0 1.414 0l8-8a1 1 0 0 0-1.414-1.414zM4 1.414L1.414 4 6 8.586 8.586 6 4 1.414zm9 4l-7 7-3-3a1 1 0 0 1 0-1.414l3-3 1.293 1.293a1 1 0 0 0 1.414 0L13 5.414z" />
+                        <path
+                           d="M9.5 13a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.5-1a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm0-2a2.5 2.5 0 0 1-2.5 2.5A2.5 2.5 0 0 1 6.5 10a.5.5 0 0 0-1 0 3.5 3.5 0 0 0 3.5 3.5A3.5 3.5 0 0 0 13 10z" />
+                     </svg>
+                  </span>
+                  Product
+               </a>
+            </li>
+            <li *ngIf="this.groupId == 1">
+               <a routerLink="/admin/groupaccess-create" routerLinkActive="active" replaceUrl=true>
+                  <span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bag-check" viewBox="0 0 16 16">
+                        <path
+                           d="M12.293 5.293l-4-4A1 1 0 0 0 7 1H5a1 1 0 0 0-1 1v2.586L.293 7.293a1 1 0 0 0 0 1.414l4 4a1 1 0 0 0 1.414 0l8-8a1 1 0 0 0-1.414-1.414zM4 1.414L1.414 4 6 8.586 8.586 6 4 1.414zm9 4l-7 7-3-3a1 1 0 0 1 0-1.414l3-3 1.293 1.293a1 1 0 0 0 1.414 0L13 5.414z" />
+                        <path
+                           d="M9.5 13a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.5-1a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm0-2a2.5 2.5 0 0 1-2.5 2.5A2.5 2.5 0 0 1 6.5 10a.5.5 0 0 0-1 0 3.5 3.5 0 0 0 3.5 3.5A3.5 3.5 0 0 0 13 10z" />
+                     </svg>
+                  </span>
+                  Group Access
+               </a>
+            </li>
+            <li *ngIf="invoiceFlag">
+               <a routerLink="/admin/invoice-management" routerLinkActive="active" replaceUrl=true>
+                  <span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bag-check" viewBox="0 0 16 16">
+                        <path
+                           d="M12.293 5.293l-4-4A1 1 0 0 0 7 1H5a1 1 0 0 0-1 1v2.586L.293 7.293a1 1 0 0 0 0 1.414l4 4a1 1 0 0 0 1.414 0l8-8a1 1 0 0 0-1.414-1.414zM4 1.414L1.414 4 6 8.586 8.586 6 4 1.414zm9 4l-7 7-3-3a1 1 0 0 1 0-1.414l3-3 1.293 1.293a1 1 0 0 0 1.414 0L13 5.414z" />
+                        <path
+                           d="M9.5 13a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.5-1a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm0-2a2.5 2.5 0 0 1-2.5 2.5A2.5 2.5 0 0 1 6.5 10a.5.5 0 0 0-1 0 3.5 3.5 0 0 0 3.5 3.5A3.5 3.5 0 0 0 13 10z" />
+                     </svg>
+                  </span>
+                  Invoice
+               </a>
+            </li>
+            <li *ngIf="userReportFlag">
+               <a routerLink="/report/users-report" routerLinkActive="active" replaceUrl=true>
+                  <span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bag-check" viewBox="0 0 16 16">
+                        <path
+                           d="M12.293 5.293l-4-4A1 1 0 0 0 7 1H5a1 1 0 0 0-1 1v2.586L.293 7.293a1 1 0 0 0 0 1.414l4 4a1 1 0 0 0 1.414 0l8-8a1 1 0 0 0-1.414-1.414zM4 1.414L1.414 4 6 8.586 8.586 6 4 1.414zm9 4l-7 7-3-3a1 1 0 0 1 0-1.414l3-3 1.293 1.293a1 1 0 0 0 1.414 0L13 5.414z" />
+                        <path
+                           d="M9.5 13a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.5-1a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm0-2a2.5 2.5 0 0 1-2.5 2.5A2.5 2.5 0 0 1 6.5 10a.5.5 0 0 0-1 0 3.5 3.5 0 0 0 3.5 3.5A3.5 3.5 0 0 0 13 10z" />
+                     </svg>
+                  </span>
+                  User Report
+               </a>
+            </li>
+            <li *ngIf="productReportFlag">
+               <a routerLink="/report/product-report" routerLinkActive="active" replaceUrl=true>
+                  <span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bag-check" viewBox="0 0 16 16">
+                        <path
+                           d="M12.293 5.293l-4-4A1 1 0 0 0 7 1H5a1 1 0 0 0-1 1v2.586L.293 7.293a1 1 0 0 0 0 1.414l4 4a1 1 0 0 0 1.414 0l8-8a1 1 0 0 0-1.414-1.414zM4 1.414L1.414 4 6 8.586 8.586 6 4 1.414zm9 4l-7 7-3-3a1 1 0 0 1 0-1.414l3-3 1.293 1.293a1 1 0 0 0 1.414 0L13 5.414z" />
+                        <path
+                           d="M9.5 13a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.5-1a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm0-2a2.5 2.5 0 0 1-2.5 2.5A2.5 2.5 0 0 1 6.5 10a.5.5 0 0 0-1 0 3.5 3.5 0 0 0 3.5 3.5A3.5 3.5 0 0 0 13 10z" />
+                     </svg>
+                  </span>
+                  Product Report
+               </a>
+            </li>
+            <li *ngIf="salesReportFlag">
+               <a routerLink="/report/sales-report" routerLinkActive="active" replaceUrl=true>
+                  <span>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-bag-check" viewBox="0 0 16 16">
+                        <path
+                           d="M12.293 5.293l-4-4A1 1 0 0 0 7 1H5a1 1 0 0 0-1 1v2.586L.293 7.293a1 1 0 0 0 0 1.414l4 4a1 1 0 0 0 1.414 0l8-8a1 1 0 0 0-1.414-1.414zM4 1.414L1.414 4 6 8.586 8.586 6 4 1.414zm9 4l-7 7-3-3a1 1 0 0 1 0-1.414l3-3 1.293 1.293a1 1 0 0 0 1.414 0L13 5.414z" />
+                        <path
+                           d="M9.5 13a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.5-1a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm0-2a2.5 2.5 0 0 1-2.5 2.5A2.5 2.5 0 0 1 6.5 10a.5.5 0 0 0-1 0 3.5 3.5 0 0 0 3.5 3.5A3.5 3.5 0 0 0 13 10z" />
+                     </svg>
+                  </span>
+                  Sales Report
+               </a>
+            </li>
+         </ul>
+      </div>
+   </div> -->

@@ -1,0 +1,41 @@
+<form [formGroup]="gridManagementForm" *ngIf="gridManagementForm">
+    <div class="col-12 head-card page-head ">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+                <h3 class="card-title common-title mb-0">{{ title }}</h3>
+            </div>
+            <div class="each-btn-box icon-circle " (click)="onCreateClick()">
+                <a href="#0" class="active">
+                    <button class="font-18 font-medium d-flex"> <span><svg width="18" height="18" viewBox="0 0 18 18"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M2.13332 7.85549C1.50125 7.85549 0.988866 8.36788 0.988867 8.99994C0.988867 9.632 1.50126 10.1444 2.13332 10.1444L7.85544 10.1444L7.85545 15.8667C7.85545 16.4988 8.36784 17.0112 8.9999 17.0112C9.63196 17.0112 10.1444 16.4988 10.1444 15.8667L10.1443 10.1444L15.8667 10.1444C16.4988 10.1444 17.0112 9.63201 17.0112 8.99995C17.0112 8.36789 16.4988 7.8555 15.8667 7.8555L10.1443 7.85549L10.1443 2.13332C10.1443 1.50125 9.63195 0.988866 8.99989 0.988866C8.36783 0.988865 7.85544 1.50125 7.85544 2.13332L7.85544 7.85549L2.13332 7.85549Z"
+                                    fill="white" />
+                            </svg>
+                        </span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 card-body each-input-box">
+        <dx-data-grid id="gridContainer" #grid [dataSource]="dataSource" [showBorders]="false"
+            (onRowDblClick)="onRowDblClick($event)" [customizeColumns]="customizeColumns">
+            <dxi-column caption="Site Name" dataField="siteName"></dxi-column>
+            <dxi-column dataField="bImage" cellTemplate="cellTemplate"></dxi-column>
+            <dxi-column caption="Description" dataField="description"></dxi-column>
+            <dxi-column caption="Status" dataField="statusName"></dxi-column>
+            <div *dxTemplate="let data of 'cellTemplate'">
+                <img [src]="data.value" />
+            </div>
+
+            <dxo-filter-row [visible]="true"></dxo-filter-row>
+            <dxo-search-panel [visible]="true"></dxo-search-panel>
+            <dxo-pager [visible]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true"
+                [allowedPageSizes]="[5, 10, 20]" [showInfo]="true">
+            </dxo-pager>
+            <dxo-paging [pageSize]="10">
+            </dxo-paging>
+        </dx-data-grid>
+    </div>
+</form>

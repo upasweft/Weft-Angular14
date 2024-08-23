@@ -1,0 +1,98 @@
+<div *ngIf="qrCodes.length>0">
+    <div class="col-12 edited_image">
+        <div class="d-flex justify-content-center">
+            <div class="col-10">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="col-12 head-card page-head ">
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-8">
+                                        <h3 class="card-title common-title mb-0">My Photos</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card-footer Edited_image_btn">
+                                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                                    <!-- *ngIf="this.hideSubmitFromBranchUser == false" -->
+                                    <!-- <a href="#0" class="active">
+                                    <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                                </a> -->
+                                    <!-- <a href="#0" class="active"> -->
+                                    <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="selectAll($event)"><i
+                                            class="bi bi-check2-square"></i> Select All</button>
+                                    <!-- </a> -->
+                                    <!-- <a href="#0" class="active"> -->
+                                    <button class="font-18 font-medium mb-3 mb-md-0 ms-2"
+                                        (click)="downloadAllSelectedImages()"><i class="bi bi-download"></i> Download
+                                        All</button>
+                                    <!-- </a> -->
+                                    <!-- <a href="#0" class="active"> -->
+                                    <button class="font-18 font-medium mb-3 mb-md-0 ms-2 dropdown-toggle"
+                                        id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false" (click)="printSelectedImages()"><i
+                                            class="bi bi-printer"></i> Print</button>
+                                    <!-- </a> -->
+                                    <!-- <div class="dropdown-menu print_dropdown" aria-labelledby="navbarDropdown">
+                                        <ul>
+                                            <li><a class="cursor_pointer"  (click)="printSelectedImages('8x10')">Size 8 X 10</a></li>
+                                            <li><a class="cursor_pointer" (click)="printSelectedImages('6x8')">Size 6 X 8</a></li>
+                                            
+                                          </ul>
+                                    </div> -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <!-- Display Images -->
+                    <div class="col-md-3 edited_image_thumbnail_customer" *ngFor="let image of editedImages">
+                        <div class="image-container">
+                            <input type="checkbox" [checked]="image.selected"
+                                (change)="onCheckboxChange($event, image)" *ngIf="image.qrStatus">
+                            <img [src]="image.imagePath" alt="Edited Image" [ngClass]="{'legacy': !image.qrStatus}"
+                                (contextmenu)="disableRightClick($event)">
+                            <div class="watermark" *ngIf="!image.qrStatus">Legacy</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-head">
+                    <h3 class="card-title common-title mb-4">Videos</h3>
+                </div>
+                <!-- Display Videos -->
+                <div class="row">
+                    <div class="col-md-3 video_thumbnail_customer" *ngFor="let video of videoFiles">
+                        <div class="video-container" style="position: relative;">
+                            <video width="320" height="240" controls [ngClass]="{'legacy': !video.qrStatus}">
+                                <source [src]="video.imagePath" type="video/mp4" (contextmenu)="disableRightClick($event)">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="watermark" *ngIf="!video.qrStatus">Legacy</div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Loader -->
+<div class="loader" *ngIf="loading">
+    <div class="loader-container">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                aria-label="Animated striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                style="width: 100%"></div>
+        </div>
+        <h5>Loading</h5>
+    </div>
+</div>
+<!-- //Loader -->

@@ -1,0 +1,91 @@
+<form [formGroup]="resourceForm" *ngIf="resourceForm"> 
+    <div class="col-12 head-card page-head ">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+                <h3 class="card-title common-title mb-0">User Guidance</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-0 common-f-size myCard">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 mt-3 each-input-box">
+                    <label>ToolName</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="toolName"
+                        placeholder="Enter ToolName" (change)="changeTextToUppercase('toolName')">
+                    <div *ngIf="submitted == true && f.toolName.errors" class="invalid-feedback">
+                        <div *ngIf="f.toolName.errors.required">ToolName is required</div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 mt-3 each-input-box">
+                    <label>Image</label>
+                    <div class="input-group d-flex">
+                        <div class="custom-file">
+                            <input type="file" class="form-control custom-file-input form-control-sm" #logoPicker
+                                (change)="upload()" />
+                            
+                        </div>
+                        <div class="image-thumb">
+                            <a (click)="thumbnailPopup = true"><img src={{f.image.value}} alt=""></a>
+                        </div>
+                    </div>
+                    <div *ngIf="imgExtensionWrong == true">Invalid Image
+                    </div>
+                    <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                        <div *ngIf="f.image.errors.required"> Image is required </div>
+                    </div>
+                     <!-- thumbnail popup start-->   
+<div class="view-image-overlay" *ngIf="thumbnailPopup" ngClass="active" (click)="thumbnailPopup = false">
+<div class="view-image-popup">
+    <a class="close" (click)="thumbnailPopup = false">&times;</a>
+    <div class="content">
+         <img src={{f.image.value}} alt="" class="w-100">
+    </div>
+</div>
+</div>
+<!-- thumbnail popup end-->  
+                    
+                </div>
+             
+             
+               
+                <div class="col-md-4 mt-3 each-input-box">
+                    <label>Description</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="description"
+                        placeholder="Enter Description" (change)="changeTextToUppercase('description')" >
+                    <div *ngIf="submitted == true && f.description.errors" class="invalid-feedback">
+                        <div *ngIf="f.description.errors.required">Description is required</div>
+                        
+                    </div>
+                </div>
+               
+
+             
+               
+                <div class="col-md-4 mt-3 form-group form-check">
+                    <label>Is Active</label>
+                    <div class="checkbox icheck">
+                        <input type="checkbox" formControlName="status" class="mt-3" checked="checked">  
+                        <span class="checkmark"></span> 
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card-footer p-3">
+                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                    <!-- *ngIf="this.hideSubmitFromBranchUser == false" -->
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                    </a>
+                    <a href="#0" class="active" >
+                        <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="onSubmit()">Submit</button>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div> 
+
+</form>

@@ -1,0 +1,14 @@
+dx-button.btn-red  {
+    background-color: #062a85;
+    color: white;
+    font-size: 11px;
+    padding: 5px 10px;
+}
+.dx-button-has-text .dx-button-content { 
+    padding: 5px 10px 7px;
+}
+.disabled-button {
+    opacity: 0.5; /* Reduce opacity to indicate disabled state */
+    cursor: not-allowed; /* Change cursor to indicate non-interactivity */
+    /* Additional styling for disabled button */
+  }

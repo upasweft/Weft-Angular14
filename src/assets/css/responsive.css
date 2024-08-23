@@ -1,0 +1,450 @@
+@media(min-width: 1700px){
+    .side-bar{
+        width: 18%;
+    }
+    .dashboard-right-section{
+        width: 82%;
+    }
+}
+@media(max-width: 1600px){
+    /*========================== login page start ====================*/
+    .login-page {
+        padding: 66px 60px;
+    }
+    .login-left-side{
+        padding: 53px 88px 78px 88px;
+        border-radius: 28px;
+    }
+    .font-36{
+        font-size: 30px;
+    }
+    .login-left-side p{
+        margin-bottom: 91px;
+    }
+    .login-bnr img{
+        height: 413px;
+    }
+    .logo-box {
+        margin-bottom: 37px;
+    }
+    .logo-box img{
+        height: 40px;
+    }
+    .login-right-side input{
+        font-size: 13px;
+        height: 42px;
+    }
+    .common-btn button{
+        font-size: 15px;
+        padding: 9px 17px;
+    }
+    .font-18 {
+        font-size: 15px;
+    }
+    /*========================== login page end =======================*/
+
+    /*========================== home page start =======================*/
+    .side-bar {
+        padding: 21px 15px 67px 15px;
+    }
+    .side-bar ul li.active a{
+        font-size: 13px;
+    }
+    .side-bar ul li a{
+        padding:8px 15px;
+        font-size: 15px;
+    }
+    /* .bottom-short-cut-nav h4{
+        font-size: 11px;
+    } */
+
+    .dashboard-right-section{
+        padding-top: 0px;
+        padding-bottom: 60px;
+    }
+    .dashboard-main-lft h1{
+        padding-bottom: 18px;
+        margin-bottom: 39px;
+    }
+    .each-btn-box span.label{
+        font-size: 13px;
+        margin-bottom: 36px;
+    }
+    .each-btn-box a.active button,.each-btn-box button{
+        padding: 7px 15px;
+        border-radius:3px;
+        border: 1px solid var(--theme-purple);
+    }
+    .each-btn-box.icon button, .each-btn-box.icon a.active button{
+        padding: 10px 11px;
+    }
+    .each-btn-box svg{
+        height: 15px;
+    }
+    .each-btn-box.icon-circle button{
+        height: 37px;
+        width: 37px;
+    }
+    .dashboard-chkbox-wrapper {
+        padding: 116px 0 116px 0;
+    }
+    .chk-box-icon{
+        height: 20px;
+        width: 20px;
+        border-radius: 3px;
+    }
+    .l-chk-box span{
+        font-size: 14px;
+    }
+    .select-status{
+        font-size: 14px;
+        margin-left: 34px;
+    }
+    
+    .each-input-box .form-control {
+        font-size: 13px;
+        height: calc(2em + .75rem + 2px);
+    }
+    .each-input-box {
+        margin-bottom: 0px;
+    }
+    .each-input-box.siblings-cls .form-group label{
+        font-size: 12px;
+        top: 2px;
+    }
+    .each-input-box textarea{
+        font-size: 13px;
+        padding: 10px 13px;
+    }
+
+    .context-menu-box ul li {
+        padding: 7px 14px;
+        font-size: 14px;
+    }
+    .context-menu-box svg{
+        height: 7px;
+        width: 8px;
+    }
+    .each-contest-box {
+        margin-bottom: 40px;
+    }
+    /*========================== home page end =========================*/
+}
+@media(max-width: 1400px){
+    /*========================== login page start ====================*/
+    .login-page {
+        padding: 52px 50px;
+    }
+    .login-left-side {
+        padding: 43px 71px 63px 71px;
+        border-radius: 22px;
+    }
+    .font-36{
+        font-size: 24px;
+    }
+    .login-left-side p{
+        margin-bottom: 73px;
+    }
+    .login-bnr img{
+        height: 331px;
+    }
+    .logo-box {
+        margin-bottom: 29px;
+    }
+    .logo-box img{
+        height: 33px;
+    }
+    .login-right-side input{
+        height: 34px;
+    }
+    .common-btn button{
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+    .font-18 {
+        font-size: 14px;
+    }
+    /*========================== login page end ====================*/
+
+    /*========================== home page start =======================*/
+    .side-bar {
+        padding: 80px 17px 54px 17px;
+    }
+    .side-bar ul li.active{
+        border-radius: 6px;
+    }
+    .side-bar ul li a{
+        padding: 8px 15px;
+    }
+    .dashboard-right-section {
+        padding-top: 0px;
+        padding-bottom: 50px;
+    }
+    .dashboard-main-lft h1 {
+        padding-bottom: 15px;
+        margin-bottom: 32px;
+    }
+    .each-btn-box span.label{
+        margin-bottom: 29px;
+    }
+    .each-btn-box a.active button, .each-btn-box button{
+        padding: 6px 12px;
+    }
+    .each-btn-box .font-18{
+        font-size: 13px;
+    }
+    .each-btn-box.icon button, .each-btn-box.icon a.active button {
+        padding: 8px 8px;
+    }
+    .each-btn-box.icon-circle button {
+        height: 30px;
+        width: 30px;
+    }
+    .dashboard-chkbox-wrapper {
+        padding: 92px 0 92px 0;
+    }
+    .chk-box-icon {
+        height: 16px;
+        width: 16px;
+        border-radius: 2px;
+    }
+    .select-status{
+        font-size: 13px;
+    }
+    .each-contest-box {
+        margin-bottom: 32px;
+    }
+    .context-menu-box ul li {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    /*========================== home page end =======================*/
+
+}
+@media(max-width: 1220px){
+    .side-bar{
+        width: 15.5%;
+    }
+}
+@media(max-width: 1199px){
+    /*========================== login page start ====================*/
+    .login-page {
+        padding: 38px 40px;
+    }
+    .login-left-side {
+        padding: 33px 54px 48px 54px;
+        border-radius: 16px;
+    }
+    .font-36{
+        font-size: 20px;
+    }
+    .login-left-side p {
+        margin-bottom: 55px;
+    }
+    .login-bnr img{
+        height: 249px;
+    }
+    .logo-box img {
+        height: 26px;
+    }
+    .logo-box {
+        margin-bottom: 21px;
+    }
+    /*========================== login page end ====================*/
+
+    /*========================== sidebar start =====================*/
+    .side-bar{
+        left:-100vw;
+        transition: 0.3s;
+        width: 20%;
+    }
+    .side-bar.active{
+        left: 0;
+        transition: 0.3s;
+    }
+    .dashboard-right-section{
+        width: 100%;
+        padding-left: 30px;
+    }
+    .menu-bar{
+        height: 3px;
+        background-color: #000;
+        position: absolute;
+        width: 100%;
+    }
+    .collapse-menu{
+        height: 20px;
+        width: 25px;
+        position: relative;
+    }
+    .collapse-menu .menu-bar:nth-child(1){
+        top: 0;
+    }
+    .collapse-menu .menu-bar:nth-child(2){
+        top: 38%;
+    }
+    .collapse-menu .menu-bar:nth-child(3){
+        top: 75%;
+    }
+    /*========================== slide bar end ======================*/
+
+    /*========================= home start ===========================*/
+    .dashboard-right-section {
+        padding-top: 0px;
+        padding-bottom: 40px;
+    }
+    .dashboard-main-lft h1 {
+        padding-bottom: 12px;
+        margin-bottom: 25px;
+    }
+    .each-btn-box span.label {
+        margin-bottom: 22px;
+    }
+    .each-btn-box a.active button, .each-btn-box button {
+        padding: 5px 9px;
+    }
+    .each-btn-box .font-18 {
+        font-size: 12px;
+    }
+    .each-btn-box.icon button, .each-btn-box.icon a.active button {
+        padding: 8px 5px;
+    }
+    .each-btn-box svg {
+        height: 12px;
+    }
+    .each-btn-box.icon-circle button {
+        height: 23px;
+        width: 23px;
+    }
+    .each-btn-box.icon-circle button{
+        margin-top: 5px;
+    }
+    .dashboard-chkbox-wrapper {
+        padding: 68px 0 68px 0;
+    }
+    /*========================= home end ==============================*/
+}
+@media(max-width: 991px){
+    /*========================= home start ============================*/
+    .dashboard-main-lft h1 {
+        padding-bottom: 9px;
+        margin-bottom: 18px;
+    }
+    .each-btn-box {
+        width: 25%;
+    }
+    .dashboard-btn-wrapper .each-btn-box:nth-child(2) {
+        width: 40%;
+    }
+    .dashboard-btn-wrapper .each-btn-box:nth-child(3) {
+        width: 20%;
+    }
+    .dashboard-btn-wrapper .each-btn-box:nth-child(4) {
+        width: 40%;
+    }
+    .each-btn-box span.label {
+        margin-bottom: 15px;
+    }
+    .dashboard-chkbox-wrapper {
+        padding: 44px 0 44px 0;
+    }
+    .each-input-box .form-control{
+        font-size: 12px;
+    }
+    .context-menu-box ul li {
+        padding: 5px 10px;
+        font-size: 13px;
+    }
+    .select-status{
+        margin-left: 20px;
+    }
+    .side-bar{
+        width: 24%;
+    }
+    /*========================= home end ==============================*/
+}
+@media(max-width: 767px){
+     /*========================== login page start ====================*/
+    .login-left-side {
+        padding: 23px 37px 33px 37px;
+        border-radius: 16px;
+    }
+    .login-bnr img {
+        height: 175px;
+    }
+    .logo-box img {
+        height: 22px;
+    }
+     /*========================== login page end ====================*/
+
+     /*========================= home start ==============================*/
+     .dashboard-main-lft h1 {
+        padding-bottom: 6px;
+        margin-bottom: 18px;
+    }
+    .each-btn-box {
+        width: 25%;
+    }
+    .dashboard-btn-wrapper .each-btn-box:nth-child(2) {
+        width: 35%;
+    }
+    .dashboard-btn-wrapper .each-btn-box:nth-child(3) {
+        width: 15%;
+    }
+    .dashboard-btn-wrapper .each-btn-box:nth-child(4) {
+        width: 26%;
+    }
+    .border-sm-0{
+        border: 0 !important;
+    }
+    .context-menu-box{
+        width: 33%;
+    }
+    .dashboard-right-section{
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .side-bar{
+        width: 32%;
+    }
+     /*========================= home end ==============================*/
+}
+@media(max-height: 740px){
+    .side-bar{
+        display: block;
+    }
+    .side-bar ul li:last-child{
+        margin-bottom: 30px;
+    }
+}
+@media(max-width: 575px){
+    .dashboard-main-lft{
+        padding-right: 0;
+        border: 0;
+    }
+    .each-btn-box {
+        width: 13%;
+    }
+    .dashboard-btn-wrapper .each-btn-box:nth-child(2) {
+        width: 20%;
+    }
+    .dashboard-btn-wrapper .each-btn-box:nth-child(3) {
+        width: 10%;
+    }
+    .dashboard-btn-wrapper .each-btn-box:nth-child(4) {
+        width: 20%;
+    }
+    .side-bar{
+        width: 42%;
+        padding:3% 17px 54px 17px;
+        height: 100vh;
+        overflow: auto;
+    }
+}
+@media(max-width: 450px){
+    .side-bar{
+        width: 63%;
+        padding-top: 85px;
+    }
+    
+}

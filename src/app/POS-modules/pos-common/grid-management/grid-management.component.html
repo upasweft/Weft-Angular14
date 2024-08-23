@@ -1,0 +1,241 @@
+<form [formGroup]="gridManagementForm" >
+    <div class="col-12 pr-5 pl-5 d-flex justify-content-between flex-wrap ">
+      <div class="col-12 head-card page-head">
+          <div class="row align-items-center justify-content-between">
+              <div class="col-8">
+                  <h3 class="card-title common-title mb-0">{{ title }}</h3>
+              </div> 
+              <div *ngIf = "isReport==false && hideCreateBtn==false" class="each-btn-box icon-circle "  (click)="onCreateClick()"> 
+                      <a href="#0" class="active">
+                          <button class="font-18 font-medium d-flex"> <span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M2.13332 7.85549C1.50125 7.85549 0.988866 8.36788 0.988867 8.99994C0.988867 9.632 1.50126 10.1444 2.13332 10.1444L7.85544 10.1444L7.85545 15.8667C7.85545 16.4988 8.36784 17.0112 8.9999 17.0112C9.63196 17.0112 10.1444 16.4988 10.1444 15.8667L10.1443 10.1444L15.8667 10.1444C16.4988 10.1444 17.0112 9.63201 17.0112 8.99995C17.0112 8.36789 16.4988 7.8555 15.8667 7.8555L10.1443 7.85549L10.1443 2.13332C10.1443 1.50125 9.63195 0.988866 8.99989 0.988866C8.36783 0.988865 7.85544 1.50125 7.85544 2.13332L7.85544 7.85549L2.13332 7.85549Z" fill="white"/>
+                              </svg>
+                              </span></button>
+                      </a> 
+              </div> 
+          </div> 
+      </div>
+      <div class="col-12 card-body each-input-box">
+          <dx-button *ngIf = "isReport==true" id="exportButton"
+                    icon="exportpdf"
+                    text="Export to PDF"
+                    (onClick)="generatePDF($event)">
+          </dx-button>        
+        <dx-data-grid id="gridContainer" #grid
+        [dataSource]="dataSource" 
+        [showBorders]="true"
+        [columns]="columnDefs"
+        (onCellDblClick)="onCellDblClick($event)" 
+        (onRowDblClick)="onRowDblClick($event)"
+        [customizeColumns]="customizeColumns">      
+        <dxo-load-panel
+          [enabled]="true">
+        </dxo-load-panel>
+        <dxo-export *ngIf="isReport==true" [enabled]="true" [printingEnabled]="true" fileName="{{title}}"></dxo-export>
+       
+        <dxo-summary *ngIf="isReport==true">
+          <dxi-total-item column="name" summaryType="count" [customizeText]="customizeCaption"></dxi-total-item>
+          <dxi-total-item column="docNum" summaryType="count" [customizeText]="customizeCaption"></dxi-total-item>
+          <dxi-total-item  column="docTotal" summaryType="sum" [customizeText]="customizeCaptionCredit">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+  
+          </dxi-total-item>
+          <dxi-total-item  column="boxCount" summaryType="sum" [customizeText]="customizeCaption"></dxi-total-item>
+          <dxi-total-item  column="credit" summaryType="sum" [customizeText]="customizeCaptionCredit">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item column="branchCode" summaryType="count" [customizeText]="customizeCaption"></dxi-total-item>
+          <dxi-total-item  column="billCount" summaryType="sum" [customizeText]="customizeCaption"></dxi-total-item>
+          <dxi-total-item  column="avg" summaryType="sum" [customizeText]="customizeCaption"></dxi-total-item>
+          <dxi-total-item  column="quantity" summaryType="sum" [customizeText]="customizeCaption"></dxi-total-item>
+          <dxi-total-item  column="debit" summaryType="sum" [customizeText]="customizeCaptionDebit">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="amount" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="receivedAmount" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="adjAmount" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="balanceAmount" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="creditReceivedAmount" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="totalWeight" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="totalRate" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="totalWeightAmount" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="total" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="netAmount" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="vatAmount" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="grossAmount" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="packingCharge" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="balance" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="awbCharge" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="othersCharge" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="discount" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="roundOff" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="recieved" summaryType="sum" [customizeText]="customizeCaptionDocTotal">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+  
+          <dxi-total-item  column="amountUptoThirtyDays" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="amountUptoSixtyDays" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="amountUptoNinetyDays" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="amountOverNinetyDays" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+  
+          <dxi-total-item  column="obDebit" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="obCredit" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="runningDebit" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="runningCredit" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <!-- <dxi-total-item caption="Closing Stock" [location]="'before'" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item> -->
+          <!-- <dxi-total-item column="docNo"  [customizeText]="customizeNetQuantity">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item> -->
+          <dxi-total-item  column="inQty" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="outQty" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+  
+          <dxi-total-item  column="totalAmount" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item column="boxName" summaryType="count" [customizeText]="customizeCaption"></dxi-total-item>
+  
+          <dxi-total-item  column="creditReceived" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+  
+          <dxi-total-item  column="boxWeight" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+  
+          <dxi-total-item  column="additionalCharge" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+  
+          <dxi-total-item  column="cashDiscount" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+  
+          <dxi-total-item  column="openingBalance" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="weight" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="otherIncome" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="creditSales" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="expense" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="cashTransfer" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="rakD" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="adcbD" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="rakW" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="adcbW" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="closingBal" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="cash" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+          <dxi-total-item  column="salesReturnCharges" summaryType="sum" [customizeText]="customizeCaptionAmount">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-total-item>
+        </dxo-summary> 
+        <dxo-summary *ngIf="isReport==true">
+          <dxi-group-item column="refNum" summaryType="count" [customizeText]="customizeCaption" [showInGroupFooter]="true"></dxi-group-item>
+          <dxi-group-item column="docTotal" summaryType="sum" [customizeText]="customizeCaptionCredit" [showInGroupFooter]="true">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-group-item>
+          <dxi-group-item column="credit" summaryType="sum" [customizeText]="customizeCaptionCredit" [showInGroupFooter]="true">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-group-item>
+          <dxi-group-item column="debit" summaryType="sum" [customizeText]="customizeCaptionDebit" [showInGroupFooter]="true">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-group-item>
+          <dxi-group-item column="cash" summaryType="sum" [customizeText]="customizeCaptionCredit" [showInGroupFooter]="true">
+            <dxo-format type="fixedPoint" [precision]="2"></dxo-format>
+          </dxi-group-item>
+        </dxo-summary>       
+          <dxo-paging 
+            [pageSize]="10">
+          </dxo-paging>
+          <dxo-pager *ngIf = "isReport==true" 
+            [visible]="true"
+            [showNavigationButtons]="true"
+            [showPageSizeSelector]="true"
+            [allowedPageSizes]="[5, 10, 20]"
+            [showInfo]="true">
+          </dxo-pager>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxo-search-panel [visible]="true"></dxo-search-panel>
+        </dx-data-grid>
+      </div>
+    </div> 
+  </form>

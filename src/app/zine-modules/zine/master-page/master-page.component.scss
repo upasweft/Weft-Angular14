@@ -1,0 +1,17 @@
+.dashboardSection .dashboardContent .leftMenu .adminSidebar{
+    background-color: white;
+    height: auto;
+}
+.rightMenu .mainPage{
+    margin-top: 45px;
+}
+@media (max-width: 1800px){
+    .dashboardSection .dashboardContent .leftMenu .adminSidebar {
+        padding: 20px 12px;
+    }
+    }
+@media (max-width: 1600px){
+.dashboardSection .dashboardContent .leftMenu .adminSidebar {
+    padding: 20px 9px;
+}
+}

@@ -1,0 +1,218 @@
+/*====================== Dashboard Header start ===================*/
+.cursor_pointer{
+    cursor: pointer;
+}
+.dash-board-header{
+    padding: 22px 40px;
+    background-color: #24273b;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+}
+.dash-board-header .form-group{
+    margin: 0;
+}
+.dashboard-search{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.dash-board-logo img{
+    width:120px
+}
+.search-icon{
+    position: absolute;
+    left: 14px;
+}
+.dashboard-search input{
+    padding-left: 35px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: rgba(24, 24, 25, 0.42);
+}
+.form-group.dashboard-search .form-control{
+    height: calc(2em + .75rem + 2px);
+}
+.notification-i{
+    position: relative;
+}
+.notification-count{
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    background-color: var(--theme-purple);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 12px;
+}
+.notification-icon{
+    width: 13%;
+    border-right: 0px solid #ABB4BD;
+    display: flex;
+    align-items: center;
+}
+.pro-content{
+    margin-right: 10px;
+    background-color: #24273b;
+}
+.pro-content p {
+    color: #ededed;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+.pro-content span{
+    color: #ABB4BD;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: capitalize;
+    display: block;
+}
+.profile-pic{
+    height: 36px;
+    width: 36px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+.profile-pic img{
+    height: 100%;
+    width: 100%;
+}
+.user-profile{
+    padding-left: 27px;
+    position: relative;
+    cursor: pointer;
+}
+.user-profile-dropdown{
+    position: absolute;
+    bottom: -65px;/*65*/
+    right: 0;
+    width: 160px;
+    padding: 5px 0;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+    z-index: -9999;
+    opacity: 0;
+    transform: translate(0,-100%);
+}
+.user-profile-dropdown.active{
+    z-index: 1000;
+    transition: 0.3s;
+    transform: translate(0,0);
+    opacity: 1;
+}
+.user-profile-dropdown ul li a{
+    padding: 4px 10px;
+    color: #111111;
+    display: block;
+}
+.user-profile-dropdown ul li a:hover{
+    background-color: #F1F1F1;
+}
+.user-profile-dropdown ul li svg{
+    height: 13px;;
+    margin-left: 5px;
+}
+.b-1.active{
+    transform: rotate(45deg);
+    top: 10px !important;
+    transition: 0.3s;
+}
+.b-2.active{
+    opacity: 0;
+    transition: 0.3s;
+}
+.b-3.active{
+    transform: rotate(-45deg);
+    top: 10px !important;
+    transition: 0.3s;
+}
+/*====================== Dashboard Header end===================*/
+
+@media(max-width: 1600px){
+    .dash-board-header{
+        padding: 19px 34px;
+    }
+    
+    .form-group.dashboard-search .form-control {
+        height: calc(1.7em + .75rem + 2px);
+    }
+    .notification-count{
+        font-size: 11px;
+    }
+    .pro-content p{
+        font-size: 13px;
+    }
+    .pro-content span{
+        font-size: 11px;
+    }
+    .profile-pic{
+        height: 30px;
+        width: 30px;
+    }
+    .down-arrow svg{
+        height: 5px;
+    }
+}
+
+@media(max-width: 1400px){
+    .dash-board-header {
+        padding: 16px 28px;
+    }
+    .user-profile-dropdown{
+        bottom: -60px;
+    }
+}
+@media(max-width: 991px){
+   
+    .notification-icon{
+        width: 20%;
+    }
+    .form-group.dashboard-search .form-control {
+        height: calc(1.4em + .75rem + 2px);
+    }
+    .user-profile-dropdown{
+        bottom: -58px;
+    }
+}
+
+@media(max-width: 767px){
+    .user-profile {
+        padding-left: 10px;
+    }
+    .dash-board-header {
+        padding: 16px 15px;
+    }
+    .user-profile-dropdown {
+        bottom: -63px;
+    }
+}
+@media(max-width: 575px){
+    .pro-content{
+        display: none;
+    }
+    .notification-icon {
+        width: 40%;
+    }
+    .profile-pic {
+        height: 25px;
+        width: 25px;
+        margin-right: 5px;
+    }
+   
+    .collapse-menu {
+        height: 16px;
+        width: 19px;
+    }
+    .menu-bar{
+        height: 2px;
+    }
+}

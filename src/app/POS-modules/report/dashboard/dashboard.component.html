@@ -1,0 +1,183 @@
+   <!-- Content Header (Page header) -->
+
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <!-- <div class="col-sm-6">
+              <h1 class="m-0 text-dark">Dashboard</h1>
+            </div> -->
+        <div class="col-sm-6" hidden>
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item">
+              <h3 style="font-weight:500">Dashboard</h3>
+            </li>
+            <!-- <li class="breadcrumb-item active">board v2</li> -->
+          </ol>
+        </div>
+        <div class="col-12 head-card page-head">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+              <h3 class="card-title common-title mb-0">Dashboard</h3>
+            </div>
+          </div>
+  
+        </div>
+        <div *ngIf="this.logggedInUser?.UserType=='S'">
+          <div >
+            <h3> Total Invoice {{dashboard?.totalInvoice}}</h3>
+          </div>
+          <div>
+            <h3> Total Void Invoice {{dashboard?.totalVoidInvoice}}</h3>
+          </div>
+          <div>
+            <h3> Total Package {{dashboard?.totalPackages}}</h3>
+          </div>
+          <div>
+            <h3> Total Clients {{dashboard?.totalClients}}</h3>
+          </div>
+          <div>
+            <h3> Total Qr Codes {{dashboard?.totalClients}}</h3>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  
+  <!-- Main content -->
+  <section class="content">
+    <!-- <div>
+        <div class="container-fluid">
+          
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Monthly Orders</span>
+                  <span class="info-box-number">
+                    2580
+                   
+                  </span>
+                </div>
+           
+              </div>
+            
+            </div>
+      
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Monthly Revenue</span>
+                  <span class="info-box-number">£41,4100</span>
+                </div>
+           
+              </div>
+            
+            </div>
+       
+            <div class="clearfix hidden-md-up"></div>
+  
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Monthly Sales</span>
+                  <span class="info-box-number">2580</span>
+                </div>
+               
+              </div>
+              
+            </div>
+           
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Monthly Customers</span>
+                  <span class="info-box-number">58</span>
+                </div>
+                
+              </div>
+             
+            </div>
+           
+          </div>
+       
+        </div>
+      
+  
+  
+        <div class="container-fluid">
+       
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Daily Orders</span>
+                  <span class="info-box-number">
+                    159
+                   
+                  </span>
+                </div>
+               
+              </div>
+            
+            </div>
+           
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Daily Revenue</span>
+                  <span class="info-box-number">£4141</span>
+                </div>
+            
+              </div>
+             
+            </div>
+         
+          
+            <div class="clearfix hidden-md-up"></div>
+  
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Daily Sales</span>
+                  <span class="info-box-number">159</span>
+                </div>
+               
+              </div>
+            
+            </div>
+            
+            <div class="col-12 col-sm-6 col-md-3">
+              <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+  
+                <div class="info-box-content">
+                  <span class="info-box-text">Daily Customers</span>
+                  <span class="info-box-number">12</span>
+                </div>
+            
+              </div>
+            
+            </div>
+            >
+          </div>
+          
+        </div>
+      </div> -->
+  </section>
+  <!-- /.content -->

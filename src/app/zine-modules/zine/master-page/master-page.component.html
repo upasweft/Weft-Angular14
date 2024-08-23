@@ -1,0 +1,83 @@
+<section class="dashboardSection" hidden>
+   
+  <section class="dashboardContent">
+      <div class="cust-container">
+          <div class="row">
+              <div class="leftMenu">
+                  <div class="dashboardHdr">
+                      <div class="dashboardIcon">
+                          <!-- <span class="dashicon" id="menuIcon"><img src="assets/images/dashIcon.png" alt=""></span> -->
+                          <a href="" class="logo"><img src="assets/images/logo.png" alt=""></a>
+                      </div>
+                  </div>
+                  <div class="adminSidebar mCustomScrollbar" data-mcs-theme="dark">
+                    <weft-side-nav></weft-side-nav>
+                  </div>
+              </div>
+              <div class="rightMenu">
+                  <!-- <div class="row">
+                      <div class="col-lg-6 searchInput">
+                          <div class="form-group">
+                              <input type="text" placeholder="Try searching">
+                              <div class="searchicon">
+                                  <img src="images/search.png" alt="">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 admin-profile">
+                          <figure><img src="images/admin.png" alt=""></figure>
+                      </div>
+                  </div> -->
+                  <weft-header></weft-header> 
+                  <div class="mainPage">
+                    <router-outlet></router-outlet>  
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+  </section>
+
+</section>
+
+<!-- <main class="dash-board"> 
+  <section class="dashboard-body">
+    <weft-side-nav></weft-side-nav>
+     
+      <div class="dashboard-right-section pr-0 pl-0"> 
+          <weft-header></weft-header> 
+          <div class="col-12 pr-3 pl-3 dashboard-right-wrap">
+
+            <router-outlet></router-outlet>  
+          </div>
+        
+    </div>
+</section> 
+
+</main> -->
+
+<main>
+    <header class="theme-header">
+        <weft-header></weft-header>  
+    </header>
+    <div class="dash-wraper">
+        <section class="sidebar">
+            <img src="assets/images/camera.png" alt="" class="header-image-ab">  
+            <div class="dash-logo">
+                <a href="#0" class=""><img src="assets/images/logo.png" alt=""></a>
+            </div>
+            <div class="sidebar-menu">
+                <weft-side-nav></weft-side-nav>
+            </div>
+        </section>
+        <section class="dashboard-content">
+            <div class="dashboard-content-wraper position-relative">
+                <router-outlet></router-outlet>
+            </div>
+            <!-- <img src="assets/images/bg-dark.jpg" alt="" class="back-absolute"> -->
+        </section>
+    </div>
+    <footer class="dash-footer">
+        <p>© 2023 powered by KNH Photo Moments</p>
+    </footer>
+</main>

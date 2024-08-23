@@ -1,0 +1,116 @@
+
+
+
+.watermark {
+    position: absolute;
+    bottom: 35%;
+    right: 0;
+    background-color: rgb(255 255 255 / 27%);
+    color: #313131;
+    padding: 5px 10px;
+    font-size: 15px;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+   
+}
+.video-container {
+    position: relative;
+    display: inline-block;
+}
+
+
+
+.image-container {
+    position: relative;
+    display: inline-block; /* Ensure the container doesn't collapse */
+}
+.pointer-event{
+    
+}
+.image-container.blur {
+    filter: blur(5px); /* Apply blur effect */
+}
+.edited_image{
+    padding: 40px;
+    background-color: #393939;
+}  
+.Edited_image_btn button{
+    color: white;
+    background-color: #272727;
+    border: 0;
+}
+.Edited_image_btn button i{
+    margin-right: 10px;
+}
+.legacy{
+    filter: blur(3px);
+    pointer-events: none;
+}
+
+
+.loader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,1);
+    top: 0;
+    left: 0;
+}
+.loader-container{
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    border-radius: 15px;
+    padding: 2.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.17);
+    &::after{
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        content: '';
+        background-color: #ffffff29;
+        position: absolute;
+    }
+    h5{
+        color: #7c7c7c;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 15px;
+        letter-spacing: 4px;
+        margin-bottom: 0;
+        font-weight: 500;
+    }
+}
+.progress{
+    position: relative;
+    z-index: 1;
+    height: 10px;
+    .progress-bar{
+        background-color: #5f9b37;
+    }
+}
+.print_dropdown{
+    background-color: #272727;
+    padding: 0 12px;
+    ul{
+        li{
+            a{
+                color: #b9b9b9;
+                padding: 7px 12px;
+                font-weight: 600;
+                display: block;
+            }
+            &:not(:last-child){
+                a{
+                    border-bottom: 1px solid rgba(255,255,255,0.17);
+                }
+            }
+        }
+    }
+}

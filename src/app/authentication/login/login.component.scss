@@ -1,0 +1,43 @@
+.login-bg{
+    max-height:100vh ;
+    object-fit: cover;
+}
+@media(max-width:1400px){
+    .login-bg{
+        height:88.5vh;
+        object-fit: cover;
+    }
+}
+.loginSection .loginRow{
+    min-height: 100vh;
+}
+.headerSection .headRow, .loginSection .loginRow, .loginSection .loginRow .loginInfo{
+    background-color: #0d0e12;
+}
+.loginSection .loginRow .loginInfo h2{
+    color: #fff;
+}
+.app-logo{
+    text-align: center;
+    margin-bottom: 30px;
+    img{
+        width: auto;
+    }
+}
+.loginSection .loginRow .loginInfo .loginInput .form-group label,
+.loginSection .loginRow .loginInfo .footInfo p{
+    color: #9a9cae;
+    font-weight: 600;
+}
+.loginSection .loginRow .loginInfo .loginInput .loginBtn{
+    background-color: #464852;
+    transition: 0.3s ease;
+}
+.loginSection .loginRow .loginInfo .loginInput .loginBtn:hover{
+    background-color: #232531;
+}
+
+.loginSection .loginRow .loginInfo .loginInput .form-group input,
+.loginSection .loginRow .loginInfo .loginInput .form-group input::placeholder{
+    font-weight: 600;
+}

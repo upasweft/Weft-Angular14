@@ -1,0 +1,409 @@
+// .claim_section{
+//     position: relative;
+//     // background-color: #000; 
+//     min-height: 100vh;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     overflow: hidden;
+// }
+// .mylogo{
+//     position: absolute;
+//     left: 20px;
+//     top: 20px;
+//     z-index: 1;
+//     @media(max-width: 575px){
+//         width: 70px !important;
+//     }
+// }
+// .claim_form_wrapper{
+//     // background-color: #393939;
+//     // background: rgba(255, 255, 255, 0.7);
+//     // background: linear-gradient(180deg, #0066ff -42.84%, rgba(46, 28, 250, 0) 10.66%), linear-gradient(0deg, rgb(9 107 253 / 7%), rgb(9 107 253 / 17%));
+// border-radius: 15px;
+// padding: 40px;
+// margin: 100px 0 30px;
+// color:white;
+// position: relative; 
+// z-index: 2;
+// }
+// .claim_form{ 
+//     padding: 30px;
+//     background: linear-gradient(179.02deg, rgba(255, 255, 255, 0.2) -151.58%, rgba(255, 255, 255, 0.2) 118.14%);
+//     background: #393939;
+//     border-radius: 15px;
+//     // box-shadow: 0px 2px 7px 0px #579AFF inset;
+//     margin-top: 20px;
+//     position: relative; 
+//     // background-color: rgb(0 0 0 / 31%);
+//     border-radius: 10px;
+//     // margin: auto;
+//     // margin-bottom: 25px;
+// }
+// .claim_form_grid h2{
+//     font-size: 34px;
+// }
+// .claim_form_grid p{
+//     color:#EDEDED;
+//     font-weight: 300;
+// }
+// .claim_form p{
+//     font-size: 14px;
+//     font-weight: 500;
+//     margin-bottom: 20px;
+// }
+// .claim_form p a{
+//     font-weight: 400;
+//     color: white;
+//     text-decoration: none;
+// }
+// .claim_form span{
+//     display: inline-block;
+//     padding:15px 32px;
+//     font-size: 26px;
+//     font-weight: bold;
+//     border: 1.47px solid #FFFFFF;
+//     margin-bottom: 65px;
+// }
+// .claim_field form{
+//      width:70%;
+//      position:relative;
+// }
+// .claim_form input{
+//     background: #D9D9D9;
+//     width:100%;
+//     border-radius: 15px;
+//     padding: 15px 60px;
+//     border: 0;
+//     box-shadow: none;
+//     margin-bottom: 10px;
+//     height: auto;
+//     @media(max-width: 575px){
+//         padding-left: 15px;
+//     }
+// }
+// .cantfind_form label {
+//     text-align: left;
+//     display: block;
+//     font-size: 14px;
+//     padding-left: 15px;
+//     margin-bottom:5px;
+// }
+// .cantfind_form.claim_form input{
+//      padding: 15px 30px;
+// }
+// .cantfind_form select{
+//     background: #D9D9D9;
+//     width:100%;
+//     border-radius: 15px;
+//     padding: 15px 30px;
+//     border: 0;
+//     box-shadow: none;
+//     -webkit-appearance: auto;
+//     -moz-appearance: auto;
+//     appearance: auto;
+// }
+// .cantfind_form textarea{
+//     background: #D9D9D9;
+//     width:100%;
+//     border-radius: 15px;
+//     padding: 15px 30px;
+//     border: 0;
+//     box-shadow: none;
+// }
+// .claim_field .alert-danger{
+//     padding: 5px 10px;
+//     color: #ff969f;
+//     background-color:transparent;
+//     border-color:#ff969f;
+// }
+// .claim_field {
+//     position: relative;
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: column;
+//     align-items: center;
+//     width: 65%;
+//     margin: auto;
+//     @media(max-width: 575px){
+//         width: 100%;
+//     }
+// }
+// .claim_field button{
+//     position: absolute;
+//     top: 12px;
+//     right: 10px;
+//     padding:0;
+//     background-color:transparent !important;
+//     border:0;
+// }
+// .claim_field img {
+    
+//     width: 30px;
+//     cursor: pointer;
+// }
+// .blur_blue {
+//     position: absolute;
+//     top: 40px;
+//     filter: blur(130px);
+//     z-index: -1;
+//     opacity: 1;
+//     width: 260px;
+//     right: -35px;
+//     animation: blueblur 4s infinite;
+    
+// }
+// .claim_demo{
+//     position: relative;
+// }
+// .claim_demo svg {
+//     position: absolute;
+//     left: -41%;
+//     top: 0;
+//     width: 78px;
+//     @media(max-width: 575px){
+//         display: none;
+//     }
+// }
+// .claim_demo svg path{
+//     stroke-dasharray: 0;
+// 	 stroke-dashoffset: 0;
+// 	 animation-name: arrow;
+// 	 animation-duration: 1.5s;
+// 	 animation-timing-function: ease;
+// 	 animation-fill-mode: forwards;
+// 	 stroke: #fff;
+// 	 stroke-width: 0.1em;
+// 	 fill: none;
+// }
+// @keyframes arrow {
+//     to {
+//         stroke-dashoffset: 0;
+//    }
+// }
+// .content_form_wraper{
+//     text-align:left;
+// }
+// .content_form_wraper ul{
+//     padding-left:0;
+// }
+// .content_form_wraper ul li{
+//     list-style:none;
+// }
+// .claim_form_grid.content_form_wraper p{
+//     font-size:15px;
+//     margin-bottom:15px;
+// }
+// .claim_form_grid.content_form_wraper h4{
+//     font-weight:400;
+//     font-size:24px;
+// }
+// @keyframes blueblur {
+//     0% {right: -35px;}
+//     50% {top:10%;right: 50%;}
+//     100% {top: 40px;right: -35px;}
+//   }
+// .blur_violet{
+//     position: absolute;
+//     top: 10%;
+//     filter: blur(130px);
+//     z-index: 0; 
+//     right: 50px;
+//     animation: violetblur 8s infinite;
+    
+// }
+// @keyframes violetblur {
+//     0% {right: 50px;}
+//     50% { right: 50%;}
+//     100% {right: 50px;}
+//   }
+
+//   @media (max-width: 1650px) {
+//     .claim_form span {
+//         font-size: 22px;
+//         margin-bottom: 55px;
+//     }
+// }
+// @media(max-width: 575px){
+//     .claim_form span {
+//         margin-bottom: 25px;
+//     }
+// }
+
+
+// .qr-upload-box{
+//     position: relative;
+//     height: 100%;
+//     width: 100%;
+//     // border: 2px dashed rgba(12, 12, 12, 0.3);
+//     border-width: medium;
+//     border-spacing: 5px;
+//     border-radius: 10px;
+//     // padding: 0 8px;
+//     overflow: hidden;
+//     width: 260px;
+//     margin-left: auto;
+//     @media(max-width: 991px){
+//         margin-top: 25px;
+//         margin-right: auto;
+//         height: auto;
+//     }
+//     input{
+//         position: absolute;
+//         height: 100%;
+//         width: 100%;
+//         top: 0;
+//         left: 0;
+//         border: none !important;
+//         outline: none;
+//         opacity: 0;
+//         z-index: 1;
+//         &:hover{
+//             cursor: pointer;
+//         }
+//     }
+// }
+// .qr-text-wraper{
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//     left: 0;
+//     display: flex;
+//     align-items: center;
+//     flex-direction: column;
+//     justify-content: center;
+//     padding: 20px;
+//     h4{
+//         font-weight: 100;
+//         font-size: 19px;
+//         margin-bottom: 0;
+//         line-height: 1;
+//         color: #393939;
+//         span{
+//             display: block;
+//             font-size: 12px;
+//             margin: 8px 0;
+//             color: #1a1a1a;
+//         }
+//     }
+// }
+// .uoload-icon{
+//     margin-bottom: 15px;
+// }
+// .arrow-anim{
+//     animation: arrowAnim 2s infinite;
+// }
+// @keyframes arrowAnim{
+//     0%{
+//         transform: translateY(0);
+//     }
+//     50%{
+//         transform: translateY(-3px);
+//     }
+//     0%{
+//         transform: translateY(0);
+//     }
+// }
+// .qr-upload-box-imgage{
+//     position: absolute;
+//     height: 100%;
+//     width: 100%;
+//     left: 0;
+//     top: 0;
+//     padding: 8px;
+//     border-radius: 10px;
+//     overflow: hidden;
+//     img{
+//         height: 100%;
+//         width: 100%;
+//         object-fit: cover;
+//         border-radius: 10px;
+//     }
+// }
+// .image-slider{
+//     position: absolute;
+//     width: 100%;
+//     height: 100vh;
+//     top: 0;
+// }
+// .slider-item{
+//    height: 100%;
+//    img{
+//     max-width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//    }
+// }
+// .qr-new{
+//     background-color: #fff;
+//     border-radius: 20px;
+//     padding: 30px 30px;
+//     position: relative;
+//     display: flex;
+//     // background: linear-gradient(180deg, #0066ff -42.84%, rgba(46, 28, 250, 0) 10.66%), linear-gradient(0deg, rgb(9 107 253 / 7%), rgb(9 107 253 / 17%));
+
+
+//     background: rgba(255, 255, 255, 0.5);
+// border-radius: 16px;
+// box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+// backdrop-filter: blur(5px);
+// -webkit-backdrop-filter: blur(5px);
+// border: 1px solid rgba(255, 255, 255, 0.3);
+// }
+
+// .new-qr-box{
+//     background-color: #e5e5e5;
+//     padding: 30px;
+//     height: 100%;
+// }
+// .new-qr-box-image-container{
+//     width: 100%;
+//     height: 170px;
+//     background-color: #ffffff;
+//     border-radius: 12px;
+//     overflow: hidden;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     img{
+//         height: 100%;
+//         width: 100%;
+//         object-fit: cover;
+//     }
+// }
+// .new-qr-upload-icon{
+//     height: 40px;
+//     width: 40px;
+//     border-radius: 50%;
+//     background-color: rgb(17, 17, 17);
+//     padding: 5px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     position: relative;
+//     margin: auto;
+//     margin-top: -25px;
+//     img{
+//         width: auto !important;
+//     }
+// }
+// .new-qr-upload-text{
+//     color: #1a1a1a;
+//     font-weight: 500;
+//     font-size: 16px;
+//     padding-top: 15px;
+// }
+// .claim_section::after{
+//     position: absolute;
+//     height: 100%;
+//     width: 100%;
+//     top: 0;
+//     left: 0;
+//     content: '';
+//     background: rgba(0, 0, 0, 0.7);
+// }
+// .image-default-upload{
+//     width: unset !important;
+//     height: unset !important;
+// }

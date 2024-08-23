@@ -1,7 +1,0 @@
-Comment - license overriding.
-file :- ag-grid-enterprise.cjs.js
-code :- return true
-where :- file line number 41
-
-        LicenseManager.prototype.validateLicense = function () {
-            return true;

@@ -1,0 +1,189 @@
+<form [formGroup]="resourceForm" *ngIf="resourceForm">
+    <div class="col-12 head-card page-head ">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+                <h3 class="card-title common-title mb-0">View Image</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-0 common-f-size myCard">
+        <div class="card-body">
+            <div class="row">
+                
+                <div class="col-md-3 mt-0 mb-3 each-input-box">
+                    <label>Qr Code</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="qrCode"
+                        placeholder="Enter Qr Code " >
+                    <div *ngIf="submitted == true && f.qrCode.errors" class="invalid-feedback">
+                        <div *ngIf="f.qrCode.errors.required">Qr Code is required</div>
+                    </div>
+                </div>
+
+                <!-- <div class="col-md-3 mt-0 mb-3 each-input-box">
+                    <label>Vat</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="vat"
+                        placeholder="Enter Vat " (keypress)="onPriceChange($event)">
+                    <div *ngIf="submitted == true && f.vat.errors" class="invalid-feedback">
+                        <div *ngIf="f.vat.errors.required">Vat is required</div>
+                    </div>
+                </div> -->
+                <div class="col-md-3 mt-0 mb-3 each-input-box">
+                    <label>Image Upload</label>
+                    <input type="file" class="form-control form-control-sm" (change)="onImageChange($event)">
+                    <div *ngIf="submitted && imageError" class="invalid-feedback">
+                        <div *ngIf="imageError">Image is required</div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card-footer p-3">
+                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                    <!-- *ngIf="this.hideSubmitFromBranchUser == false" -->
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                    </a>
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-3 mb-md-0 ms-2 theme-success" (click)="onSubmit()">Submit</button>
+                    </a>
+                    <!-- <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-3 mb-md-0 ms-2 theme-delete" (click)="onDelete()">Delete</button>
+                    </a> -->
+                   
+
+                </div>
+            </div>
+        </div>
+       
+    
+    </div>
+       
+    <div class="loader" *ngIf="loading">
+        <div class="loader-container">
+            <!-- <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div> -->
+            <img src="assets/img/loader-unscreen.gif" alt="" />
+            <!-- <h5>Loading</h5> -->
+        </div>
+    </div>
+</form>
+
+<div *ngIf="orginalImages && orginalImages.length > 0">
+    <div class="page-head">
+        <h3 class="card-title common-title mb-4">Original Images</h3>
+        <div class="select-action d-flex align-items-center mb-4">
+            <label class="custom-checkbox icheck select-all-checkmark me-4 mb-0">Select All
+                <input type="checkbox" (change)="selectAllOriginalImages($event)">
+                <span class="checkmark"></span>
+            </label>
+            <button class="font-18 delete-btn" (click)="onDelete()"><span><i class="bi bi-trash3-fill"></i></span>Delete</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" style="margin-bottom:25px;" *ngFor="let image of orginalImages">
+            <div class="view_thumb_image position-relative">
+                <div class="custom-checkbox icheck">
+                    <input type="checkbox" id="showOrginalImages" [(ngModel)]="image.selected" (change)="onCheckboxChange(image.orginalImagePath, $event)">
+                    <span class="checkmark"></span>
+                </div>
+                <img [src]="image.orginalImagePath" alt="Original Image" (click)="openModal(image.orginalImagePath)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="editedImages && editedImages.length > 0" class="mt-4">
+    <div class="page-head">
+        <h3 class="card-title common-title mb-4">Edited Images</h3>
+        <div class="select-action d-flex align-items-center mb-4">
+            <label class="custom-checkbox icheck select-all-checkmark me-4 mb-0">Select All
+                <input type="checkbox" (change)="selectAllEditedImages($event)">
+                <span class="checkmark"></span>
+            </label>
+            <button class="font-18 delete-btn" (click)="onDelete()"><span><i class="bi bi-trash3-fill"></i></span>Delete</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" style="margin-bottom:25px;" *ngFor="let image of editedImages">
+            <div class="view_thumb_image position-relative">
+                <div class="custom-checkbox icheck">
+                    <input type="checkbox" id="showEditedImages" [(ngModel)]="image.selected" (change)="onCheckboxChange(image.imagePath, $event)">
+                    <span class="checkmark"></span>
+                </div>
+                <img [src]="image.imagePath" alt="Edited Image" (click)="openModal(image.imagePath)" style="cursor: pointer;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="videoFiles && videoFiles.length > 0" class="mt-4">
+    <div class="page-head">
+        <h3 class="card-title common-title mb-4">Videos</h3>
+        <div class="select-action d-flex align-items-center mb-4">
+            <label class="custom-checkbox icheck select-all-checkmark me-4 mb-0">Select All
+                <input type="checkbox" (change)="selectAllVideos($event)">
+                <span class="checkmark"></span>
+            </label>
+            <button class="font-18 delete-btn" (click)="onDelete()"><span><i class="bi bi-trash3-fill"></i></span>Delete</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" style="margin-bottom:25px;" *ngFor="let video of videoFiles">
+            <div class="video-container" style="position: relative;">
+                <div class="custom-checkbox icheck">
+                    <input type="checkbox" id="showVideoFiles" [(ngModel)]="video.selected" (change)="onCheckboxChange(video.imagePath, $event)">
+                    <span class="checkmark"></span>
+                </div>
+                <video width="320" height="240" controls [ngClass]="{'legacy': !video.qrStatus}">
+                    <source [src]="video.imagePath" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="watermark" *ngIf="!video.qrStatus">Legacy</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" [ngClass]="{'modal fade': true, 'show': showModal}" [ngStyle]="{'display': showModal ? 'block' : 'none'}">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel"></h5>
+                <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img [src]="selectedImage" alt="Selected Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal confirmation-modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true"   [ngClass]="{'modal fade': true, 'show': deleteModal}"  [ngStyle]="{'display': deleteModal ? 'block' : 'none'}">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel"></h5>
+          <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div> -->
+        <div class="modal-body">
+          <!-- <img [src]="selectedImage" alt="Image" class="img-fluid"> -->
+          <div class="confirmation-modal-content">
+            <h4>Do You Want to Delete ?</h4>
+            <div class="confirmation-modal-control">
+                <button class="theme-success" (click)="onYes()">Yes</button>
+                <button aria-label="Close" (click)="closeModalDelete()">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
