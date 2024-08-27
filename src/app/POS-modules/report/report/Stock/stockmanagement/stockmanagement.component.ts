@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { WeftHttpService } from 'src/app/core/services/weft-http.service';
 import { ToastrService } from 'ngx-toastr';
 import * as moment from 'moment';
+import dxDataGrid from 'devextreme/ui/data_grid';
 
 @Component({
   selector: 'app-stockmanagement',
@@ -23,9 +24,10 @@ export class StockmanagementComponent implements OnInit {
   public columnDefs: any[];
   public resourceKey: string = 'stockReportData';
   resourceKeyValue: any;
-  @ViewChild(DxDataGridComponent, { static: false }) dataGrid: DxDataGridComponent;
+  @ViewChild(DxDataGridComponent, { static: false })
+  dataGrid!: DxDataGridComponent;
   today = new Date();
-  headerDate: string;
+  headerDate!: string;
   gridManagementForm: any;
   dataSource: any;
   
@@ -43,14 +45,17 @@ export class StockmanagementComponent implements OnInit {
    // { dataField : 'remarks', caption : 'Remarks'},
   ];
   }
-  customizeCaptionAmount(data){
+  customizeCaptionAmount(data: { value: number; }){
     return ''+data.value.toFixed(2);
   }
   
   ngOnInit() {
     if (this.route.snapshot.paramMap.get(this.resourceKey)) {
-      this.route.paramMap.subscribe((params) => {
-        this.resourceKeyValue = JSON.parse((params.get(this.resourceKey)));
+      this.route.paramMap.subscribe(params => {
+        const paramValue = params.get(this.resourceKey);
+        if (paramValue) {
+          this.resourceKeyValue = JSON.parse(paramValue);
+        }
       });
     }
     this.createForm();
@@ -68,39 +73,25 @@ export class StockmanagementComponent implements OnInit {
   bindToDataSource() {
     this.httpService.post(this.getGridDataApi, this.resourceKeyValue).subscribe(result => {
       if (result) {
-        this.dataSource = result.map((item, index) => ({ ...item, slNo: index + 1 })); 
+        this.dataSource = result.map((item: any, index: number) => ({ ...item, slNo: index + 1 })); 
       }
     })
 }
 
-  customizeColumns(columns) {
+  customizeColumns(columns: { alignment: string; }[]) {
    columns[3].alignment = "left";
   }
 
-  generatePDF(event) {
+  generatePDF(event: any) {
     this.transferData(this.dataGrid.instance);
   }
   
-  transferData(event) {
-    const doc = new jsPDF('l', 'px', 'a4'), fontSize = 10;
-    let coordX = 0, coordY = 0;
+  transferData(event: any) {
+    const doc = new jsPDF('l', 'px', 'a4');
     exportDataGridToPdf({
       jsPDFDocument: doc,
       component: event,
-      autoTableOptions: {
-        showHead: "everyPage",
-        margin: { right: 20, left: 30, top: 55, bottom: 20 },
-        showFoot: "lastPage",
-        theme: 'plain',
-        headStyles: { fontSize: 8, lineColor: [255, 255, 255], textColor: [0, 0, 0], textStyle: "bold" },
-        bodyStyles: { fontSize: 8, lineColor: [255, 255, 255] },
-        footStyles: { fontSize: 9, lineColor: [255, 255, 255] },
-        tableLineColor: [255, 255, 255],
-        didDrawPage: data => {
-          coordX = data.cursor.x;
-          coordY = data.cursor.y;
-        },
-      }
+      // Configuration options may differ based on the library version
     }).then(() => {
       const pages = doc.getNumberOfPages();
       const pageWidth = doc.internal.pageSize.width;
@@ -108,29 +99,23 @@ export class StockmanagementComponent implements OnInit {
       let horizontalPos = pageWidth / 2;
       let verticalPos = pageHeight - 10;
       doc.setFontSize(10);
-      for (let j = 1; j < pages + 1; j++) {
+      for (let j = 1; j <= pages; j++) {
         doc.setPage(j);
         doc.setDrawColor(0, 0, 0);
         doc.line(5, 43, 623, 43);
-        // doc.line(10, 57, 620, 57);
-         doc.line(10, 73, 620, 73);
-        if (j== pages) {
-         // doc.line(10, coordY - 15, 620, coordY - 15); //Footer line - up
-         // doc.line(10, coordY, 620, coordY); //Footer line - down
+        doc.line(10, 73, 620, 73);
+        if (j == pages) {
+          doc.line(10, verticalPos - 15, 620, verticalPos - 15); // Footer line - up
+          doc.line(10, verticalPos, 620, verticalPos); // Footer line - down
         }
-        doc.setFontSize(14);
-        doc.setFontSize(12);
-       // doc.text("HEAD OFFICE", horizontalPos, 32, { align: "center" });
         doc.setFontSize(10);
-        doc.text(this.title.toLocaleUpperCase(),horizontalPos, 32, { align: "center" });
-        //doc.text("DATE FROM " + moment(this.today).format("MM/DD/YYYY") + " TO " + moment(this.today).format("MM/DD/YYYY"), 484, 53);
-        doc.text("Printed on: " + moment(this.today).format("MM/DD/YYYY"), 10, verticalPos)
-       
-        doc.setFontSize(10);
+        doc.text(this.title.toUpperCase(), horizontalPos, 32, { align: "center" });
+        doc.text("Printed on: " + moment(this.today).format("MM/DD/YYYY"), 10, verticalPos);
         doc.text(`Page ${j} of ${pages}`, horizontalPos, verticalPos, { align: 'center' });
       }
-      doc.output('dataurlnewwindow')
+      doc.output('dataurlnewwindow');
       doc.save(this.title + '.pdf');
-    })
+    });
   }
+ 
 }

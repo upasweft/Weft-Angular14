@@ -1,0 +1,27 @@
+<div class="row h-100 align-items-center justify-content-center" id ="printAllQrCode" >
+    <div class="col-md-3 mt-0 mb-3 each-input-box" *ngFor="let box of insertedQrCodes;let i = index"  >
+        <div class="pagebreak"></div>
+        <div class="qr-code-gaping" >
+            <!-- <qrcode [size]="900" [level]="'Q'" [qrdata]="qrData"></qrcode> -->
+            <!-- <div style="font-size:70pt"><b>"{{box.boxName}}"</b></div> -->
+            <qrcode  [level]="3" [qrvalue]="box"></qrcode>
+            <div style="font-size:5pt"><b>{{box}}</b></div>
+        </div> 
+      
+    </div>
+    <!-- <div class="col-12">
+        <div class="card-footer p-3">
+            <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                
+                <a href="#0" class="active">
+                    <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                </a>
+                <a href="#0" class="active">
+                    <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="onPrint()">Print</button>
+                </a>
+
+            </div>
+        </div>
+    </div> -->
+</div>
+ 

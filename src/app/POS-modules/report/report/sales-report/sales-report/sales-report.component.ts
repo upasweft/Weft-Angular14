@@ -13,7 +13,7 @@ import { WeftAPIConfig } from 'src/app/shared/weft-api-config';
 })
 export class SalesReportComponent implements OnInit {
   resourceForm: any;
-  submitted:boolean;
+  submitted: boolean = false;
   getSalesReportPath:string ='/report/sales-report-management'
   showDateInputs: boolean=true;
   sites: any;
@@ -34,8 +34,8 @@ export class SalesReportComponent implements OnInit {
 
   getSites() {
     this.httpService.get(WeftAPIConfig.siteSettings).subscribe(res => {
-      const filteredSites = res.filter(s => s.status == true);
-      const sortedSites = filteredSites.sort((a, b) => (a.siteName > b.siteName) ? 1 : -1);
+      const filteredSites = res.filter((s: { status: boolean; }) => s.status == true);
+      const sortedSites = filteredSites.sort((a: { siteName: number; }, b: { siteName: number; }) => (a.siteName > b.siteName) ? 1 : -1);
         // Create a default site option
     const defaultSite = { siteSettingId: 0, siteName: 'All' }; // Modify the properties accordingly
 
@@ -44,7 +44,7 @@ export class SalesReportComponent implements OnInit {
     console.log(this.sites)
     })
   }
-  onSiteSelect(event)
+  onSiteSelect(event: any)
   {
 
   }
@@ -55,7 +55,7 @@ export class SalesReportComponent implements OnInit {
 
   }
 
-  Changeoption(event) {
+  Changeoption(event: any) {
     const selectedOption = this.resourceForm.get('reportOption').value;
     const today = moment();
   

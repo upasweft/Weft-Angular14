@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'ui',
     loadChildren: () => import('./ui-components/ui-components.module').then(mod => mod.UiComponentsModule),
   },
+  {
+    path: 'report',
+    loadChildren: () => import('./POS-modules/report/report/report.module').then(mod => mod.ReportModule),
+  },
 ];
 
 @NgModule({

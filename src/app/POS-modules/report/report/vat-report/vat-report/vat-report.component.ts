@@ -12,10 +12,10 @@ import { WeftAPIConfig } from 'src/app/shared/weft-api-config';
 })
 export class VatReportComponent implements OnInit {
   resourceForm: any;
-  submitted:boolean;
+  submitted: boolean = false;
   getSalesReportPath:string ='/report/vat-report-management'
   showDateInputs: boolean=true;
-  sites: any[];
+  sites: any[] = [];
   constructor(private fb: FormBuilder,private router: Router,private httpService: WeftHttpService) { }
 
   ngOnInit() {
@@ -30,14 +30,14 @@ export class VatReportComponent implements OnInit {
       siteSettingsId:new FormControl(0,Validators.required)
     })
   }
-  onSiteSelect(event){
+  onSiteSelect(_event: any){
 
   }
 
   getSites() {
     this.httpService.get(WeftAPIConfig.siteSettings).subscribe(res => {
-      const filteredSites = res.filter(s => s.status == true);
-      const sortedSites = filteredSites.sort((a, b) => (a.siteName > b.siteName) ? 1 : -1);
+      const filteredSites = res.filter((s: { status: boolean; }) => s.status == true);
+      const sortedSites = filteredSites.sort((a: { siteName: number; }, b: { siteName: number; }) => (a.siteName > b.siteName) ? 1 : -1);
         // Create a default site option
     const defaultSite = { siteSettingId: 0, siteName: 'All' }; // Modify the properties accordingly
 
@@ -51,7 +51,7 @@ export class VatReportComponent implements OnInit {
     this.resourceForm.reset();
 
   }
-  Changeoption(event) {
+  Changeoption(_event: any) {
     const selectedOption = this.resourceForm.get('reportOption').value;
     const today = moment();
   

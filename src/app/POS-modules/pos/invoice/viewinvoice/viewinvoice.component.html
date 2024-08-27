@@ -1,0 +1,66 @@
+<div class="">
+    <div style="width : 100%;">
+        <div class="col-12 heading  invoice_head d-flex justify-content-between">
+            <p class="mb-0">INVOICE</p> <span (click)="close()" data-bs-dismiss="modal" aria-label="Close"><i
+                    class="bi bi-x-lg"></i></span>
+        </div>
+        <div class="model-body">
+            <div class="h-box">
+                <div class="row body-h-box">
+                    <div class="col-md-12">
+                        <h3 class="p-2 mt-0 mb-0">Details</h3>
+                        <div class="row justify-content-between mb-4">
+                            <div class="col-md-12">
+                                <table class="view_summry_table">
+                                   
+                                    <tr>
+                                        <td>Invoice Number</td>
+                                        <td>: {{invoice?.invoiceNumber}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Invoice Date</td>
+                                        <td>: {{invoice?.invoiceDate | date:'yyyy-MM-dd'}}</td>
+                                    </tr>
+
+
+                                </table>
+                                <table class="item-table">
+                                    <tr>
+                                        <th>
+                                            Product Name
+                                        </th>
+                                        <th>
+                                            Site Name
+                                        </th>
+                                        <th>
+                                            Vat
+                                        </th>
+                                        <th>
+                                            Rate
+                                        </th>
+                                        <th>
+                                            QTY
+                                        </th>
+                                        <th>
+                                            Sub Total
+                                        </th>
+                                    </tr>
+                                    <tr *ngFor="let items of invoice?.invoiceItems;let i = index;">
+                                        <td>{{items.product.productName}}</td>
+                                        <td>{{items.product.siteSettings.siteName}}</td>
+                                        <td>{{items.product.siteSettings.vat}}</td>
+                                        <td>{{items.product.price}}
+                                        </td>
+                                        <td>{{items.quantity}}</td>
+                                        <td>{{items.price * items.quantity}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

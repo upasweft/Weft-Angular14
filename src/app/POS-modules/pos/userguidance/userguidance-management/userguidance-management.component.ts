@@ -27,7 +27,7 @@ export class UserguidanceManagementComponent implements OnInit {
   ngOnInit() {
   }
 
-  customizeColumns(columns) {
+  customizeColumns(columns: any) {
    
   }
 }

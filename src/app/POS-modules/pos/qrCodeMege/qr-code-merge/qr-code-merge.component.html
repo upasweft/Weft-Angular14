@@ -1,0 +1,71 @@
+<form [formGroup]="resourceForm" *ngIf="resourceForm">
+    <div class="col-12 head-card page-head ">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+                <h3 class="card-title common-title mb-0">Merge Qr Code</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-0 common-f-size myCard">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 mt-0 mb-3 each-input-box">
+                    <div class="flex-grow-1">
+                        <label>Qr Code</label>
+
+                        <div class="d-flex input_group_row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control form-control-sm" formControlName="qrCode"
+                                    placeholder="Enter QrCode">
+                            </div>
+                            <a href="#0" class="active">
+                                <button class="font-18 font-medium button_success" (click)="onEnterKeyPressed()">Show
+                                    Images</button>
+                            </a>
+                        </div>
+
+                        <div *ngIf="submitted && f['qrCode'].errors" class="invalid-feedback">
+                            <div *ngIf="f['qrCode'].errors['required']">Qr Code is required</div>
+                          </div>
+                    </div>
+
+                </div>
+                <div class="image-container">
+                    <div class="row image-item-wraper">
+                        <div *ngFor="let imageUrl of images" class=" col-md-2 img-item">
+                            <img [src]="imageUrl.photoType==0 ?imageUrl.imagePath :imageUrl.orginalImagePath"
+                                alt="Image" class="small-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mt-0 mb-3 each-input-box">
+                    <label>New Qr Code</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="newQrCode"
+                        placeholder="Enter QrCode">
+                        <div *ngIf="submitted && f['newQrCode'].errors" class="invalid-feedback">
+                            <div *ngIf="f['newQrCode'].errors['required']">New Qr Code is required</div>
+                          </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card-footer p-3">
+                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                    <!-- *ngIf="this.hideSubmitFromBranchUser == false" -->
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                    </a>
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="onSubmit()">Merge</button>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</form>

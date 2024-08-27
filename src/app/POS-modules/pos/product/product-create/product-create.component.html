@@ -1,0 +1,74 @@
+<form [formGroup]="resourceForm" *ngIf="resourceForm">
+    <div class="col-12 head-card page-head ">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+                <h3 class="card-title common-title mb-0">Product</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-0 common-f-size myCard">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 mt-0 each-input-box">
+                    <label>Product Code</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="productCode"
+                        placeholder="Enter Product Code" (change)="changeTextToUppercase('productCode')">
+                    <div *ngIf="submitted && f['productCode'].errors" class="invalid-feedback">
+                        <div *ngIf="f['productCode'].errors['required']">Product Code is required</div>
+                        <div *ngIf="f['productCode'].errors['maxlength']">Product Code should be less than 10</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-0 each-input-box">
+                    <label>Product Name</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="productName"
+                        placeholder="Enter Product Name" (change)="changeTextToUppercase('productName')">
+                    <div *ngIf="submitted && f['productName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['productName'].errors['required']">Product Name is required</div>
+                        <div *ngIf="f['productName'].errors['maxlength']">Product Name length should be less than 150</div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3 mt-0 each-input-box">
+                    <label>Product Image</label>
+                    <div class="input-group d-flex">
+                        <div class="custom-file">
+                            <input type="file" class="form-control custom-file-input form-control-sm" #logoPicker
+                                (change)="upload()" />
+                        </div>
+                        <div class="image-thumb">
+                            <a (click)="thumbnailPopup = true"><img [src]="imagePath" alt=""></a>
+                        </div>
+                    </div>
+                    <div *ngIf="imgExtensionWrong">Invalid Image</div>
+                    <div *ngIf="submitted && f['productImage'].errors" class="invalid-feedback">
+                        <div *ngIf="f['productImage'].errors['required']">Product Image is required</div>
+                    </div>
+                    <!-- thumbnail popup start-->
+                    <div class="view-image-overlay" *ngIf="thumbnailPopup" [ngClass]="{'active': thumbnailPopup}" (click)="thumbnailPopup = false">
+                        <div class="view-image-popup">
+                            <a class="close" (click)="thumbnailPopup = false">&times;</a>
+                            <div class="content">
+                                <img [src]="imagePath" alt="" class="w-100">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- thumbnail popup end-->
+                </div>
+
+                <!-- Other input fields remain unchanged, just ensure to update access to bracket notation -->
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card-footer p-3">
+                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                    </a>
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="onSubmit()">Submit</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

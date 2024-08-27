@@ -12,9 +12,9 @@ import { WeftAPIConfig } from 'src/app/shared/weft-api-config';
 })
 export class MonthlysummaryComponent implements OnInit {
   resourceForm: any;
-  submitted:boolean;
+  submitted: boolean = false;
   getSalesReportPath:string ='/report/monthlysummary-report-management'
-  sites: any[];
+  sites: any[] = [];
   constructor(private fb: FormBuilder,private router: Router,private httpService: WeftHttpService) { }
 
   ngOnInit() {
@@ -31,8 +31,8 @@ export class MonthlysummaryComponent implements OnInit {
 
   getSites() {
     this.httpService.get(WeftAPIConfig.siteSettings).subscribe(res => {
-      const filteredSites = res.filter(s => s.status == true);
-      const sortedSites = filteredSites.sort((a, b) => (a.siteName > b.siteName) ? 1 : -1);
+      const filteredSites = res.filter((s: { status: boolean; }) => s.status == true);
+      const sortedSites = filteredSites.sort((a: { siteName: number; }, b: { siteName: number; }) => (a.siteName > b.siteName) ? 1 : -1);
         // Create a default site option
     const defaultSite = { siteSettingId: 0, siteName: 'All' }; // Modify the properties accordingly
 
@@ -40,7 +40,7 @@ export class MonthlysummaryComponent implements OnInit {
     this.sites = [defaultSite, ...sortedSites];
     })
   }
-  onSiteSelect(event)
+  onSiteSelect(event: any)
   {
 
   }

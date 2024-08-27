@@ -1,0 +1,137 @@
+<form [formGroup]="resourceForm" *ngIf="resourceForm">
+    <div class="col-12 head-card page-head ">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+                <h3 class="card-title common-title mb-0">Group Access</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-0 common-f-size myCard">
+        <div class="card-body">
+            <div class="row">
+               
+                <div class="col-md-4 mt-0 mb-0 each-input-box mb-2">
+                    <label for="">Group</label>
+                    <ng-select [items]="groupTypes" bindLabel="name" bindValue="groupId"
+                        placeholder="Select Group" formControlName="groupId"
+                        (change)="onChangeGroup($event)">
+                    </ng-select>
+                    <div *ngIf="submitted == true && f['groupId'].errors" class="invalid-feedback">
+                        <div *ngIf="f['groupId'].errors['required']">Group is required</div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="col-md-4 mt-0 each-input-box mb-2">
+                    
+                        <label for="">Menu</label>
+                        <ng-select [items]="menuTypes" bindLabel="name" bindValue="menuId"
+                            placeholder="Select Menu" formControlName="menuId" (change)="onChangeMenu($event)">
+                        </ng-select>
+                        <div *ngIf="submitted == true && f['menuId'].errors" class="invalid-feedback">
+                            <div *ngIf="f['menuId'].errors['required']">Menu is required</div>
+                        </div>
+                        
+                        
+                   
+                </div>
+                <div class="col-lg-12 groupaccess-form-fields mt-0 mb-2 pl-5 pr-5">
+                    <div *ngIf="usersFlag == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+                            {{item.subMenuName}}
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div *ngIf="settingsFlag == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+                            {{item.subMenuName}}
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div *ngIf="productFlag == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox d-inline-block mb-2" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+                            {{item.subMenuName}}
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div *ngIf="invoiceFlag == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+                            {{item.subMenuName}}
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div *ngIf="reportsFlag == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+                            {{item.subMenuName}}
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div *ngIf="editing == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+ {{item.subMenuName}}
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div *ngIf="cms == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+                            {{item.subMenuName}}
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div *ngIf="contactusFlag == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+                            {{item.subMenuName}}
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div *ngIf="privacyPolicyFlag == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+                            {{item.subMenuName}}
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div *ngIf="userGuidanceFlag == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+ {{item.subMenuName}}
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div *ngIf="termsandconditionsFlag == true" class="col-12 intransist-form mt-4">
+                        <label class="mr-3 me-3 custom-checkbox" *ngFor="let item of newArray">
+                            <input type="checkbox" [value]="item.subMenuId" (change)="onCheckboxChange($event)" [checked]="item.checked">
+
+                            {{item.subMenuName}}
+                                <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+              
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card-footer p-3">
+                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                    <!-- *ngIf="this.hideSubmitFromBranchUser == false" -->
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                    </a>
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="onSubmit()">Submit</button>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

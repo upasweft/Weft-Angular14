@@ -12,7 +12,7 @@ export class UsedqrviewComponent implements OnInit {
   @Input() id: any;
   invoice: any;
   editedImages: any;
-  loading: boolean;
+  loading: boolean = false;
   constructor(private httpService: WeftHttpService, private bsModalRef: BsModalRef) { }
 
   ngOnInit() {

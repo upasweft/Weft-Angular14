@@ -1,0 +1,365 @@
+<div id="printInvDat" class="print-page">
+    <table class="main-table" style="max-width: 100%; width: 100%; margin: auto;">
+        <tr>
+            <td style="padding: 0 30px;">
+                <div style="background-color: #f1f1f100; padding: 15px 0; border-bottom: 2px solid #e91f2a40;">
+                    <table style="margin-bottom: 0; border-bottom: 0; width: 100%;">
+                        <tr>
+                            <!-- <td style="text-align: left;"><img src="assets/img/abc-cargo-logo.png" alt="" width="120">
+                            </td> -->
+                            <td style="text-align: center; padding: 0 0 2px 0;  font-size: 12pt;font-weight: 500;" class="print-header">
+                                <h3 style="font-weight: 600;">KNH PHOTO MOMENTS</h3>
+                                <p>{{this.generalreceipts?.address}}</p>
+                                <p>{{this.generalreceipts.contact}} | {{this.generalreceipts.email}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tax-invoice">
+                    <h4>Tax Invoice</h4>
+                    <p class="mb-0">{{this.generalreceipts.siteName}} | TR No: {{this.generalreceipts.trn}}</p>
+                    
+                    <div style="font-size: 13pt; font-weight: 600;"> </div>
+                </div>
+                <div>
+                    <table style="width:100%">
+                        <tr>
+                            <td style="vertical-align: baseline; width: 50%; padding-right: 20px;">
+                                <div class="tax-invoice-header">
+                                    <table>
+                                        <tr>
+                                            <td style="vertical-align: baseline; padding: 0;">
+                                                <table>
+                                                    <tr>
+                                                        <td><div class="tax-invoice-item-head">Invoice No:</div></td>
+                                                        <td><div class="tax-invoice-item-content">{{this.generalreceipts.docNumber }}</div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="tax-invoice-item-head">Invoice Date:</div></td>
+                                                        <td><div class="tax-invoice-item-content">{{this.generalreceipts.invoiceDate | date: 'dd/MM/yyyy'}}</div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="tax-invoice-item-head">Time:</div></td>
+                                                        <td><div class="tax-invoice-item-content">{{this.generalreceipts.invoiceTime | date: 'HH:mm:ss'}}</div></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td style="vertical-align: baseline;">
+                                                <table>
+                                                    <tr>
+                                                        <td><div class="tax-invoice-item-head">Photo Code:</div></td>
+                                                        <td><div class="tax-invoice-item-content">{{this.generalreceipts.photoCode }}</div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="tax-invoice-item-head">Guest Name:</div></td>
+                                                        <td><div class="tax-invoice-item-content">{{this.generalreceipts.guest}}</div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="tax-invoice-item-head">Phone:</div></td>
+                                                        <td><div class="tax-invoice-item-content">{{this.generalreceipts.phone }}</div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="tax-invoice-item-head">Mail:</div></td>
+                                                        <td><div class="tax-invoice-item-content">{{this.generalreceipts.emailCustomer }}</div></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="row" hidden>
+                                        <div class="col-md-6">
+                                            <div class="tax-invoice-item-sec">
+                                                <div class="row">
+                                                    <div class="col-md-6"><div class="tax-invoice-item-head">Invoice No:</div></div>
+                                                    <div class="col-md-6"><div class="tax-invoice-item-content">{{this.generalreceipts.docNumber }}</div></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6"><div class="tax-invoice-item-head">Invoice Date:</div></div>
+                                                    <div class="col-md-6"><div class="tax-invoice-item-content">{{this.generalreceipts.invoiceDate | date: 'dd/MM/yyyy'}}</div></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6"><div class="tax-invoice-item-head">Time:</div></div>
+                                                    <div class="col-md-6"><div class="tax-invoice-item-content">{{this.generalreceipts.invoiceTime | date: 'HH:mm:ss'}}</div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="tax-invoice-item-sec">
+                                                <div class="row">
+                                                    <div class="col-md-6"><div class="tax-invoice-item-head">Photo Code:</div></div>
+                                                    <div class="col-md-6"><div class="tax-invoice-item-content">{{this.generalreceipts.photoCode }}</div></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6"><div class="tax-invoice-item-head">Guest Name:</div></div>
+                                                    <div class="col-md-6"><div class="tax-invoice-item-content">{{this.generalreceipts.guest}} </div></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6"><div class="tax-invoice-item-head">Phone:</div></div>
+                                                    <div class="col-md-6"><div class="tax-invoice-item-content">{{this.generalreceipts.phone }} </div></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6"><div class="tax-invoice-item-head">Mail:</div></div>
+                                                    <div class="col-md-6"><div class="tax-invoice-item-content">{{this.generalreceipts.emailCustomer }} </div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <span class="titltname"> Invoice No:</span>
+                                        <span class="titledtl"> {{this.generalreceipts.docNumber }}</span> 
+                                        <br> -->
+                                        <!-- <span class="titltname"> Invoice Date: </span>
+                                        <span class="titledtl">{{this.generalreceipts.invoiceDate | date: 'dd/MM/yyyy'}}</span> 
+                                        <br> -->
+                                        <!-- <span class="titltname">Time:</span>
+                                        <span class="titledtl">{{this.generalreceipts.invoiceTime | date: 'HH:mm:ss'}} </span>
+                                        <br> -->
+                                        <!-- <span class="titltname">Photo Code:</span>
+                                        <span class="titledtl">{{this.generalreceipts.photoCode }} </span>
+                                        <br>
+                                        <span class="titltname">Guest Name:</span>
+                                        <span class="titledtl">{{this.generalreceipts.guest}} </span>
+                                        <br>
+                                        <span class="titltname">Phone:</span>
+                                        <span class="titledtl">{{this.generalreceipts.phone }} </span>
+                                        <br>
+                                        <span class="titltname">Mail:</span>
+                                        <span class="titledtl">{{this.generalreceipts.emailCustomer }} </span> -->
+                                        
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="col-12 head-card page-head mt-3 mb-3">
+                                    <div class="row align-items-center justify-content-between">
+                                        <div class="col-8">
+                                            <h3 class="card-title common-title mb-0">DETAILS</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td> 
+                        </tr>
+                    </table>
+                    <div style="padding: 0 10px;">
+                        <table style="width:100%" class="miscPrintTable">
+                            <tr>
+                                <td class="t-head">Sl.No</td>
+                                <td class="t-head">Item</td>
+                                <!-- <td class="t-head">Invoice No</td> -->
+                                <td class="t-head">QTY</td>
+    
+                                <td class="t-head">Price</td>
+                                <td class="t-head">Amount</td>
+                            </tr>
+                            
+    
+                            <tbody class="list-tb" style="margin-top: 15px;">
+                                 <tr *ngFor="let result of this.generalreceipts.invoiceItems
+    
+                                ;let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{result.productName}}</td>
+                                    <td>{{result.quantity}}</td>
+                                    <td>{{result.unitPrice}}</td>
+                                    <td>{{result.amount}}</td>                               
+                                </tr>
+                                <tr class="total-amount">
+                                    <td colspan="2">Total</td>
+                                    
+                                    <td>{{getTotalNetAmount()}}</td>
+                                    <td></td>
+                                    <td>{{getTotalCrAmount()}}</td>
+                                  </tr> 
+    
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- <div class="col-12 head-card page-head mt-4 mb-3">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-8">
+                                <h3 class="card-title common-title mb-0">INCLUSIVE OF ALL TAXES</h3>
+                            </div>
+                        </div>
+                    </div> -->
+                    <table style="width:100%">
+                        <tr>
+
+                            <td style="padding-left: 0; padding-right: 0;">
+                                <!-- <div
+                                    style="padding: 15px 15px; background-color: #fff1f1; border-radius: 10px; height: 100%; min-height: 357px;">
+                                    
+                                        <span style="font-weight: 700; margin-bottom: 15px; display: block;"></span>
+
+                                        <P > Discount: {{this.generalreceipts.disc}}</P><br>  
+                                        <P > Gross Amount: {{this.generalreceipts.grossAmount}}</P><br> 
+                                        <P > Tax: {{this.generalreceipts.taxAmount}}</P><br> 
+                                        <P > Grand Total: {{this.generalreceipts.grandTotal}}</P><br> 
+                                        <P > Card: {{this.generalreceipts.card}}</P><br>
+                                        <P > cash: {{this.generalreceipts.cash}}</P><br>  
+                                        <P > Card: {{this.generalreceipts.cash}}</P><br>  
+                                        <P > Paid Amount: {{this.generalreceipts.paidAmount}}</P><br>  
+                                        <P > change: {{this.generalreceipts.change}}</P><br>  
+                                </div> -->
+                                <div class="summery">
+                                    <table class="summery-item">
+                                        <tr>
+                                            <td style="width: 350px;">
+                                                <table>
+                                                    <tr>
+                                                        <td><div class="summery-item-head">Discount</div></td>
+                                                        <td><div class="summery-item-content">{{this.generalreceipts.disc}}</div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="summery-item-head">Gross Amount</div></td>
+                                                        <td><div class="summery-item-content">{{this.generalreceipts.grossAmount}}</div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="summery-item-head">Vat Amount</div></td>
+                                                        <td><div class="summery-item-content">{{this.generalreceipts.taxAmount}}</div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="summery-item-head">Cash</div></td>
+                                                        <td><div class="summery-item-content"> {{ this.generalreceipts.cash  }}</div></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td style="width: 410px; padding-left: 60px;">
+                                                <table>
+                                                     <tr>
+                                                        <td><div class="summery-item-head">Card</div></td>
+                                                        <td><div class="summery-item-content">{{this.generalreceipts.card}}</div></td>
+                                                    </tr>
+                                                    <!-- <tr>
+                                                        <td><div class="summery-item-head">Cash</div></td>
+                                                        <td><div class="summery-item-content">{{this.generalreceipts.cash}}</div></td>
+                                                    </tr>  -->
+                                                    <tr>
+                                                        <td><div class="summery-item-head">paid Amount</div></td>
+                                                        <td><div class="summery-item-content">{{this.generalreceipts.paidAmount}}</div></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><div class="summery-item-head">Change</div></td>
+                                                        <td><div class="summery-item-content">{{this.generalreceipts.cahnge}}</div></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!--<div class="row">
+                                        <div class="col-md-5">
+                                            <div class="summery-item">
+                                                <div class="summery-item-head">Discount</div>
+                                                <div class="summery-item-content">{{this.generalreceipts.disc}}</div>
+                                            </div>
+                                            <div class="summery-item">
+                                                <div class="summery-item-head">Gross Amount</div>
+                                                <div class="summery-item-content">{{this.generalreceipts.grossAmount}}</div>
+                                            </div>
+                                            <div class="summery-item">
+                                                <div class="summery-item-head">Tax</div>
+                                                <div class="summery-item-content">{{this.generalreceipts.taxAmount}}</div>
+                                            </div>
+                                            <div class="summery-item">
+                                                <div class="summery-item-head">Grand Total</div>
+                                                <div class="summery-item-content">{{this.generalreceipts.grandTotal}}</div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="summery-item">
+                                                <div class="summery-item-head">Card</div>
+                                                <div class="summery-item-content">{{this.generalreceipts.card}}</div>
+                                            </div>
+                                            <div class="summery-item">
+                                                <div class="summery-item-head">Cash</div>
+                                                <div class="summery-item-content">{{this.generalreceipts.cash}}</div>
+                                            </div>
+                                            <div class="summery-item">
+                                                <div class="summery-item-head">Card</div>
+                                                <div class="summery-item-content">{{this.generalreceipts.cash}}</div>
+                                            </div>
+                                            <div class="summery-item">
+                                                <div class="summery-item-head">Paid Amount</div>
+                                                <div class="summery-item-content">{{this.generalreceipts.paidAmount}}</div>
+                                            </div>
+                                            <div class="summery-item">
+                                                <div class="summery-item-head">Change</div>
+                                                <div class="summery-item-content">{{this.generalreceipts.change}}</div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                </div>
+                            </td>
+                            <!-- <td>  Cash/Bank/PDC</td> -->
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 0; padding-right: 0;">
+                                <div class="ptint-footer">
+                                    <h6>No Refunds</h6>
+                                    <h3>Thank You !!</h3>
+                                    <p>Visit Again</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                  
+
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- <div id="printInvData" style="padding-top: 100px;" hidden>
+    <table class="main-table" style="max-width: 100%; width: 100%; margin: auto;">
+        <tr>
+            <td style="padding: 0 30px;">
+                <div style="background-color: #f1f1f100; padding: 15px 0;">
+                    <table style="margin-bottom: 0; border-bottom: 0; width: 100%;">
+                        <tr>
+                            <td style="text-align: left;"><img src="assets/img/abc-cargo-logo.png" alt="" width="120"></td>
+                            <td style="text-align: right; padding: 0 0 2px 0; font-weight: 700; font-size: 18pt;">Customer Receipt
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="vertical-align: baseline; width: 50%; padding-right: 20px;">
+                            <div style="padding: 15px 15px; background-color: #fff1f1; border-radius: 10px; height: 100%; min-height: 357px;">
+                                <p style="font-size: 12pt; line-height: 1.5; font-weight: 500; margin-bottom: 0;"><span style="font-weight: 700; margin-bottom: 15px; display: block;"></span> Receipt No: {{generalreceipts.invData.refNum}} 
+                                     <br> Received Date: {{generalreceipts.invData.receivedDate | date: 'dd/MM/yyyy'}} <br>  
+                                     Invoice No: {{generalreceipts.invData.invoiceNo}}<br>  
+                                     Invoice Date: {{generalreceipts.invData.invoiceDate}}  <br>  
+                                     Customer : {{generalreceipts.invData.billToName}} <br> 
+                                     Amount : {{generalreceipts.invData.amount}} </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="vertical-align: baseline; width: 50%; padding-right: 20px;">
+                            <div style="padding: 15px 15px; background-color: #fff1f1; border-radius: 10px; height: 100%; min-height: 357px;">
+                                <p style="font-size: 12pt; line-height: 1.5; font-weight: 500; margin-bottom: 0;">
+                                    <span style="font-weight: 700; margin-bottom: 15px; display: block;"></span> 
+                                    Account: {{generalreceipts.invData.accountHeadName}}</p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: left; padding: 7px 0 2px 0; font-weight: 600; font-size: 12pt;">Remarks: {{generalreceipts.invData.remarks}}</td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</div> -->

@@ -15,12 +15,12 @@ export class StockComponent implements OnInit {
   resourceForm: any;
   categories: any;
   selectedCategoryId: any;
-  submitted: boolean;
+  submitted: boolean = false;
   subcategories: any;
   getProductReportPath: string = '/report/stock-report-management'
   getStockReportPath: string = '/report/stock-report-Details-management'
   products: any;
-  sites: any[];
+  sites: any[] = [];
   siteId: any;
   summary: boolean  = true;
   constructor(private fb: FormBuilder, private router: Router, private httpService: WeftHttpService) { }
@@ -44,8 +44,8 @@ export class StockComponent implements OnInit {
   }
   getSites() {
     this.httpService.get(WeftAPIConfig.siteSettings).subscribe(res => {
-      const filteredSites = res.filter(s => s.status == true);
-      const sortedSites = filteredSites.sort((a, b) => (a.siteName > b.siteName) ? 1 : -1);
+      const filteredSites = res.filter((s: { status: boolean; }) => s.status == true);
+      const sortedSites = filteredSites.sort((a: { siteName: number; }, b: { siteName: number; }) => (a.siteName > b.siteName) ? 1 : -1);
         // Create a default site option
     const defaultSite = { siteSettingId: 0, siteName: 'All' }; // Modify the properties accordingly
 
@@ -53,7 +53,7 @@ export class StockComponent implements OnInit {
     this.sites = [defaultSite, ...sortedSites];
     })
   }
-  onSiteSelect(event){
+  onSiteSelect(event: { siteSettingId: any; }){
     this.resourceForm.controls['productId'].setValue(null);
     this.siteId= event.siteSettingId;
    
@@ -65,7 +65,7 @@ export class StockComponent implements OnInit {
     })
 
   }
-  onProductSelect(event)
+  onProductSelect(event: any)
   {
 
   }
@@ -92,7 +92,7 @@ export class StockComponent implements OnInit {
   cancel() {
 
   }
-  Changeoption(event) {
+  Changeoption(event: any) {
     const selectedOption = this.resourceForm.get('reportOption').value;
     if(selectedOption =='summary')
     {

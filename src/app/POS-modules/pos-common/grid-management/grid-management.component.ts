@@ -3,7 +3,10 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DxDataGridComponent } from 'devextreme-angular';
 import { WeftHttpService } from 'src/app/core/services/weft-http.service';
-
+interface ColumnDef {
+  dataField: string;
+  caption: string;
+}
 @Component({
   selector: 'app-grid-management',
   templateUrl: './grid-management.component.html',
@@ -30,7 +33,7 @@ export class GridManagementComponent implements OnInit {
   @Input()
   getGridDataApi!: string;
   @Input()
-  columnDefs!: [];
+  columnDefs!: ColumnDef[];
   @Input() customizeColumns: any;
   @Input() isReport = false;
   @Input() isEdit = true;

@@ -1,0 +1,47 @@
+$primary_color: #0f1014;
+$secondary_color: #15171c;
+$text_color: #9a9cae;
+
+.invoice_head{
+    background-color: $secondary_color;
+    font-size: 18px;
+    padding:20px 15px;
+    color: white;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    span{
+        display: inline-block;
+        cursor: pointer;
+    }
+}
+.item-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #686868;
+}
+
+.item-table th {
+    background-color: #3d404e;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #686868; 
+    color: #fff;
+}
+
+
+.item-table td {
+    padding: 8px;
+    border: 1px solid #686868; 
+}
+.model-body{
+    padding: 20px;
+}
+.body-h-box{
+    color: $text_color;
+    font-weight: 600;
+    h3{
+        font-weight: 500;
+        font-size: 17px;
+    }
+}

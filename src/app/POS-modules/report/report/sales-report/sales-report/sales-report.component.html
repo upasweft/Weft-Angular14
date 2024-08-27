@@ -1,5 +1,5 @@
 <form [formGroup]="resourceForm" *ngIf="resourceForm"> 
-    <div class="col-12 head-card page-head ">
+    <div class="col-12 head-card page-head">
         <div class="row align-items-center justify-content-between">
             <div class="col-8">
                 <h3 class="card-title common-title mb-0">Sales Report</h3>
@@ -9,83 +9,75 @@
     <div class="col-12 p-0 common-f-size myCard">
         <div class="card-body">
             <div class="row">
-               
                 <div class="col-md-3 mt-0 mb-2 each-input-box">
                     <label>Report Options</label> <br>
                     <div class="form-group report-options">
                         <label class="custom-radio-btn">Date Range
-                            <input type="radio" name="radio" formControlName="reportOption" (change)="Changeoption($event)"  id="date" value="date">
+                            <input type="radio" name="radio" formControlName="reportOption" (change)="Changeoption($event)" id="date" value="date">
                             <span class="checkmark"></span>
-                          </label>
-                          <label class="custom-radio-btn">Weekely
-                            <input type="radio" name="radio" formControlName="reportOption" (change)="Changeoption($event)"id="weekly" value="weekly">
+                        </label>
+                        <label class="custom-radio-btn">Weekly
+                            <input type="radio" name="radio" formControlName="reportOption" (change)="Changeoption($event)" id="weekly" value="weekly">
                             <span class="checkmark"></span>
-                          </label>
-                          <label class="custom-radio-btn">Monthly
+                        </label>
+                        <label class="custom-radio-btn">Monthly
                             <input type="radio" name="radio" formControlName="reportOption" (change)="Changeoption($event)" id="monthly" value="monthly">
                             <span class="checkmark"></span>
-                          </label>
-                          <label class="custom-radio-btn">Annually
+                        </label>
+                        <label class="custom-radio-btn">Annually
                             <input type="radio" name="radio" formControlName="reportOption" (change)="Changeoption($event)" id="annually" value="annually">
                             <span class="checkmark"></span>
-                          </label>
-                        <!-- <input type="radio" id="date" value="date" name="radio"
-                            formControlName="reportOption" (change)="Changeoption($event)" >
-                        <label for="date">Date Range</label>
-                        <input type="radio" id="weekly" value="weekly" name="radio"
-                            formControlName="reportOption" (change)="Changeoption($event)" >
-                        <label for="weekly">Weekely</label>
-                        <input type="radio" id="monthly" value="monthly" name="radio"
-                            formControlName="reportOption" (change)="Changeoption($event)">
-                        <label for="monthly">Monthly</label>
-                        <input type="radio" id="annually" value="annually" name="radio"
-                            formControlName="reportOption" (change)="Changeoption($event)">
-                        <label for="annually">Annually</label> -->
+                        </label>
                     </div>
                     <div *ngIf="submitted && f.reportOption.errors" class="invalid-feedback">
                         <div *ngIf="f.reportOption.errors.required">Report Option is required</div>
                     </div>
                 </div>
+
                 <div class="col-md-3 mt-0 mb-2 each-input-box" *ngIf="showDateInputs">
                     <label>Date From</label>
                     <input type="date" class="form-control form-control-sm" formControlName="dateFrom" name="dateFrom"
-                    placeholder="SELECT DATE FROM" >
+                           placeholder="SELECT DATE FROM">
                     <div *ngIf="submitted && f.dateFrom.errors" class="invalid-feedback">
                         <div *ngIf="f.dateFrom.errors.required">Date From is required</div>
                     </div>
                 </div>
+
                 <div class="col-md-3 mt-0 mb-2 each-input-box" *ngIf="!showDateInputs">
                     <label>Date From</label>
                     <input type="date" class="form-control form-control-sm" formControlName="dateFrom" name="dateFrom"
-                    placeholder="SELECT DATE FROM" disabled="showDateInputs" >
+                           placeholder="SELECT DATE FROM" [attr.disabled]="showDateInputs ? true : null">
                     <div *ngIf="submitted && f.dateFrom.errors" class="invalid-feedback">
                         <div *ngIf="f.dateFrom.errors.required">Date From is required</div>
                     </div>
                 </div>
-                <div class="col-md-3 mt-0 mb-2 each-input-box"  *ngIf="showDateInputs">
+
+                <div class="col-md-3 mt-0 mb-2 each-input-box" *ngIf="showDateInputs">
                     <label>Date To</label>
                     <input type="date" class="form-control form-control-sm" formControlName="dateTo" name="dateTo"
-                    placeholder="SELECT DATE TO">
+                           placeholder="SELECT DATE TO">
                     <div *ngIf="submitted && f.dateTo.errors" class="invalid-feedback">
                         <div *ngIf="f.dateTo.errors.required">Date To is required</div>
                     </div>
                 </div>
 
-                <div class="col-md-3 mt-0 mb-2 each-input-box"  *ngIf="!showDateInputs">
+                <div class="col-md-3 mt-0 mb-2 each-input-box" *ngIf="!showDateInputs">
                     <label>Date To</label>
                     <input type="date" class="form-control form-control-sm" formControlName="dateTo" name="dateTo"
-                    placeholder="SELECT DATE TO"  disabled="showDateInputs">
+                           placeholder="SELECT DATE TO" [attr.disabled]="showDateInputs ? true : null">
                     <div *ngIf="submitted && f.dateTo.errors" class="invalid-feedback">
                         <div *ngIf="f.dateTo.errors.required">Date To is required</div>
                     </div>
                 </div>
+
                 <div class="col-md-3 mt-0 mb-2 each-input-box">
                     <label>Site Name</label>
                     <ng-select class="select-mandatory" #select formControlName="siteSettingsId"
                         bindValue="siteSettingId" bindLabel="siteName" [items]="sites"
-                        placeholder="Select Site Name" (change)="onSiteSelect($event)"> </ng-select>
-                    <div *ngIf="submitted == true && f.siteSettingId.errors" class="invalid-feedback">
-                        <div *ngIf="f.siteSettingId.errors.required">Site Name is required</div>
+                        placeholder="Select Site Name" (change)="onSiteSelect($event)">
+                    </ng-select>
+                    <div *ngIf="submitted && f.siteSettingsId.errors" class="invalid-feedback">
+                        <div *ngIf="f.siteSettingsId.errors.required">Site Name is required</div>
                     </div>
                 </div>
             </div>
@@ -93,18 +85,14 @@
         <div class="col-12">
             <div class="card-footer p-3">
                 <div class="each-btn-box d-flex flex-wrap justify-content-end">
-                    <!-- *ngIf="this.hideSubmitFromBranchUser == false" -->
                     <a href="#0" class="active">
                         <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
                     </a>
-                    <a href="#0" class="active" >
+                    <a href="#0" class="active">
                         <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="onSubmit()">Show</button>
                     </a>
-                    
                 </div>
             </div>
         </div>
-    </div> 
-
+    </div>
 </form>
-

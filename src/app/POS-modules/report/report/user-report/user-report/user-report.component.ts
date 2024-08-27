@@ -12,10 +12,10 @@ import { WeftAPIConfig } from 'src/app/shared/weft-api-config';
 export class UserReportComponent implements OnInit {
   userTypes: { id: string; name: string; }[];
   resourceForm: any;
-  submitted:boolean;
+  submitted: boolean = false;
   getUserReportPath:string = '/report/users-report-management'
   resourceKeyValue: any;
-  sites: any[];
+  sites: any[] = [];
   constructor(private fb: FormBuilder, private router: Router,private httpService: WeftHttpService) {
     this.userTypes = [
       { id: 'A', name: "All" },
@@ -37,8 +37,8 @@ export class UserReportComponent implements OnInit {
 
   getSites() {
     this.httpService.get(WeftAPIConfig.siteSettings).subscribe(res => {
-      const filteredSites = res.filter(s => s.status == true);
-      const sortedSites = filteredSites.sort((a, b) => (a.siteName > b.siteName) ? 1 : -1);
+      const filteredSites = res.filter((s: { status: boolean; }) => s.status == true);
+      const sortedSites = filteredSites.sort((a: { siteName: number; }, b: { siteName: number; }) => (a.siteName > b.siteName) ? 1 : -1);
         // Create a default site option
     const defaultSite = { siteSettingId: 0, siteName: 'All' }; // Modify the properties accordingly
 
@@ -47,11 +47,11 @@ export class UserReportComponent implements OnInit {
     
     })
   }
-  onSiteSelect(event)
+  onSiteSelect(event: any)
   {
 
   }
-  onUserTypeSelect(event)
+  onUserTypeSelect(event: { id: any; })
   {
     this.resourceForm.controls['userType'].setValue(event.id)
   }

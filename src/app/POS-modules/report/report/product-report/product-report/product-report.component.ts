@@ -14,11 +14,11 @@ export class ProductReportComponent implements OnInit {
   resourceForm: any;
   categories: any;
   selectedCategoryId: any;
-  submitted: boolean;
+  submitted: boolean = false;
   subcategories: any;
   getProductReportPath: string = '/report/product-report-management'
   products: any;
-  sites: any[];
+  sites: any[] = [];
   constructor(private fb: FormBuilder, private router: Router, private httpService: WeftHttpService) { }
 
   ngOnInit() {
@@ -41,15 +41,15 @@ export class ProductReportComponent implements OnInit {
   getCategories() {
     this.httpService.get(WeftAPIConfig.categoryService).subscribe(res => {
       res.splice(0, 0, { categoryId: 0, categoryName: "All", status: true });
-      this.categories = res.filter(s => s.status)
+      this.categories = res.filter((s: { status: any; }) => s.status)
     })
 
   }
 
   getSites() {
     this.httpService.get(WeftAPIConfig.siteSettings).subscribe(res => {
-      const filteredSites = res.filter(s => s.status == true);
-      const sortedSites = filteredSites.sort((a, b) => (a.siteName > b.siteName) ? 1 : -1);
+      const filteredSites = res.filter((s: { status: boolean; }) => s.status == true);
+      const sortedSites = filteredSites.sort((a: { siteName: number; }, b: { siteName: number; }) => (a.siteName > b.siteName) ? 1 : -1);
         // Create a default site option
     const defaultSite = { siteSettingId: 0, siteName: 'All' }; // Modify the properties accordingly
 
@@ -57,23 +57,23 @@ export class ProductReportComponent implements OnInit {
     this.sites = [defaultSite, ...sortedSites];
     })
   }
-  onSiteSelect(event){
+  onSiteSelect(event: any){
     
   }
   getProducts() {
     this.httpService.get(WeftAPIConfig.productService).subscribe(res => {
       res.splice(0, 0, { productId: 0, productName: "All", status: true });
-      this.products = res.filter(s => s.status)
+      this.products = res.filter((s: { status: any; }) => s.status)
     })
 
   }
-  onCategorySelect(event) {
+  onCategorySelect(event: { categoryId: any; }) {
     this.resourceForm.controls['categoryId'].setValue(event.categoryId);
     this.selectedCategoryId = event.categoryId
     this.getSubCategories(this.selectedCategoryId);
   }
 
-  getSubCategories(categoryId) {
+  getSubCategories(categoryId: number) {
     this.httpService.get(WeftAPIConfig.subcategoryService).subscribe(res => {
       if (categoryId == 0) {
         res.splice(0, 0, { subcategoryId: 0, subcategoryName: "All", status: true });
@@ -81,13 +81,13 @@ export class ProductReportComponent implements OnInit {
       }
       else {
         res.splice(0, 0, { subcategoryId: 0, subcategoryName: "All", status: true });
-        this.subcategories = res.filter(s => s.status && s.categoryId == categoryId)
+        this.subcategories = res.filter((s: { status: any; categoryId: any; }) => s.status && s.categoryId == categoryId)
       }
     })
 
   }
   get f() { return this.resourceForm.controls; }
-  onSubCategorySelect(event) {
+  onSubCategorySelect(event: { subcategoryId: any; }) {
     this.resourceForm.controls['subCategoryId'].setValue(event.subcategoryId);
   }
   onSubmit() {

@@ -1,0 +1,102 @@
+<form [formGroup]="resourceForm" *ngIf="resourceForm">
+    <div class="col-12 head-card page-head ">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+                <h3 class="card-title common-title mb-0">Site Settings</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-0 common-f-size myCard">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 mt-0 each-input-box">
+                    <label>Site Code</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="siteCode"
+                        placeholder="Enter Site Code" (change)="changeTextToUppercase('siteCode')">
+                    <div *ngIf="submitted == true && f['siteCode'].errors" class="invalid-feedback">
+                        <div *ngIf="f['siteCode'].errors['required']">Site Code is required</div>
+                        <div *ngIf="f['siteCode'].errors['maxlength']">Site Code should be less than 10</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-0 each-input-box">
+                    <label>Site Name</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="siteName"
+                        placeholder="Enter Site Name" (change)="changeTextToUppercase('siteName')" >
+                    <div *ngIf="submitted == true && f['siteName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['siteName'].errors['required']">Site Name is required</div>
+                        <div *ngIf="f['siteName'].errors['maxlength']">Site Name length should be less than 250</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mt-0 each-input-box">
+                    <label>Contact Number</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="contact"
+                        placeholder="Enter Contact Number" (change)="changeTextToUppercase('contact')" >
+                    <div *ngIf="submitted == true && f['contact'].errors" class="invalid-feedback">
+                        <div *ngIf="f['contact'].errors['pattern']">Enter only '+' and numbers</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-0 each-input-box">
+                    <label>Email</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="email"
+                        placeholder="Enter Email" >
+                    <div *ngIf="submitted == true && f['email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['email'].errors['maxlength']">Email length should be less than 50</div>
+                        <div *ngIf="f['email'].errors['pattern']">Invalid email</div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mt-0 each-input-box">
+                    <label>Vat %</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="vat"
+                        placeholder="Enter Vat " (keypress)="onPriceChange($event)">
+                    <div *ngIf="submitted == true && f['vat'].errors" class="invalid-feedback">
+                        <div *ngIf="f['vat'].errors['required']">Vat is required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-0 each-input-box">
+                    <label>Municipality Tax (%)</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="tax"
+                        placeholder="Enter Tax " (keypress)="onPriceChange($event)">
+                </div>
+                <div class="col-md-3 mt-0 each-input-box">
+                    <label>TRN</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="trn"
+                        placeholder="Enter TRN ">
+                    <div *ngIf="submitted == true && f['trn'].errors" class="invalid-feedback">
+                        <div *ngIf="f['trn'].errors['required']">TRN is required</div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mt-0 form-group form-check">
+                    <label>Is Active</label> <br>
+                    <div class=" custom-checkbox icheck">
+                        <input type="checkbox" formControlName="status" class="mt-2" checked="checked">
+                        <span class="checkmark"></span>
+                    </div>
+                </div>
+                <div class="col-md-9 mt-0 each-input-box">
+                    <label>Address</label>
+                    <textarea class="form-control form-control-sm" formControlName="address"
+                        placeholder="Enter Address" (change)="changeTextToUppercase('address')" ></textarea>
+                    <div *ngIf="submitted == true && f['address'].errors" class="invalid-feedback">
+                        <div *ngIf="f['address'].errors['required']">Address is required</div>
+                        <div *ngIf="f['address'].errors['maxlength']">Address length should be less than 250</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card-footer p-3">
+                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                    </a>
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="onSubmit()">Submit</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

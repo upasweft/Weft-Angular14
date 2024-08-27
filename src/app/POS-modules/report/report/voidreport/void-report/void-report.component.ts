@@ -14,11 +14,11 @@ export class VoidReportComponent implements OnInit {
   resourceForm: any;
   categories: any;
   selectedCategoryId: any;
-  submitted: boolean;
+  submitted: boolean = false;
   subcategories: any;
   getProductReportPath: string = '/report/void-report-management'
   products: any;
-  sites: any[];
+  sites: any[] = [];
   siteId: any;
   constructor(private fb: FormBuilder, private router: Router, private httpService: WeftHttpService) { }
 
@@ -35,8 +35,8 @@ export class VoidReportComponent implements OnInit {
   }
   getSites() {
     this.httpService.get(WeftAPIConfig.siteSettings).subscribe(res => {
-      const filteredSites = res.filter(s => s.status == true);
-      const sortedSites = filteredSites.sort((a, b) => (a.siteName > b.siteName) ? 1 : -1);
+      const filteredSites = res.filter((s: { status: boolean; }) => s.status == true);
+      const sortedSites = filteredSites.sort((a: { siteName: number; }, b: { siteName: number; }) => (a.siteName > b.siteName) ? 1 : -1);
       // Create a default site option
       const defaultSite = { siteSettingId: 0, siteName: 'All' }; // Modify the properties accordingly
 
@@ -44,7 +44,7 @@ export class VoidReportComponent implements OnInit {
       this.sites = [defaultSite, ...sortedSites];
     })
   }
-  onSiteSelect(event) {
+  onSiteSelect(event: any) {
     this.resourceForm.controls['productId'].setValue(null);
   }
 

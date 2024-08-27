@@ -1,0 +1,79 @@
+<form [formGroup]="resourceForm" *ngIf="resourceForm">
+    <div class="col-12 head-card page-head ">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-8">
+                <h3 class="card-title common-title mb-0">Banner Settings</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-0 common-f-size myCard">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 mt-0 each-input-box">
+                    <label>Banner Title</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="bannerTitle"
+                        placeholder="Enter Banner Title" (change)="changeTextToUppercase('bannerTitle')">
+                        <div *ngIf="submitted && f['bannerTitle'].errors" class="invalid-feedback">
+                            <div *ngIf="f['bannerTitle'].errors['required']">Banner Title is required</div>
+                          </div>
+                </div>
+               
+            
+                <div class="col-md-4 mb-3 mt-0 each-input-box">
+                    <label>Banner Image</label>
+                    <div class="input-group d-flex">
+                        <div class="custom-file">
+                            <input type="file" class="form-control custom-file-input form-control-sm" #logoPicker
+                                (change)="upload()" />
+
+                        </div>
+                        <div class="image-thumb">
+                            <a (click)="thumbnailPopup = true"><img [src]="imagePath" alt=""></a>
+                        </div>
+                    </div>
+                    <div *ngIf="imgExtensionWrong == true">Invalid Image
+                    </div>
+                    <div *ngIf="submitted && f['bannerImage'].errors" class="invalid-feedback">
+                        <div *ngIf="f['bannerImage'].errors['required']">Banner Image is required</div>
+                      </div>
+                    <!-- thumbnail popup start-->
+                    <div class="view-image-overlay" *ngIf="thumbnailPopup" ngClass="active"
+                        (click)="thumbnailPopup = false">
+                        <div class="view-image-popup">
+                            <a class="close" (click)="thumbnailPopup = false">&times;</a>
+                            <div class="content">
+                                <img src={{imagePath}} alt="" class="w-100">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- thumbnail popup end-->
+
+                </div>
+
+                <div class="col-md-3 mt-0 ps-3 form-group form-check">
+                    <label>Is Active</label> <br>
+                    <div class="custom-checkbox icheck">
+                        <input type="checkbox" formControlName="status" class="mt-2" checked="checked">
+                        <span class="checkmark"></span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card-footer p-3">
+                <div class="each-btn-box d-flex flex-wrap justify-content-end">
+                    <!-- *ngIf="this.hideSubmitFromBranchUser == false" -->
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-0" (click)="cancel()">Cancel</button>
+                    </a>
+                    <a href="#0" class="active">
+                        <button class="font-18 font-medium mb-3 mb-md-0 ms-2" (click)="onSubmit()">Submit</button>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

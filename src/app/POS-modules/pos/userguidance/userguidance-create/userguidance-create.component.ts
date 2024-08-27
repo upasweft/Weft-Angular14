@@ -11,8 +11,9 @@ import { WeftAPIConfig } from 'src/app/shared/weft-api-config';
   styleUrls: ['./userguidance-create.component.scss']
 })
 export class UserguidanceCreateComponent implements OnInit {
-  @ViewChild('logoPicker', { static: false}) logoPicker;
-  public resourceForm: FormGroup;
+  @ViewChild('logoPicker', { static: false })
+  logoPicker!: { nativeElement: any; };
+  public resourceForm!: FormGroup;
   submitted: boolean = false;
   editted: boolean = false;
  resourceGetApi : string = WeftAPIConfig.userGuidanceService+"/allUserGuidance";
@@ -23,13 +24,13 @@ export class UserguidanceCreateComponent implements OnInit {
   thumbnailPopup = false;
   resourceUploadApi:string = WeftAPIConfig.aboutUsService+"/upload";
   resourceKey: string = 'userGuidanceId';
-  resourceKeyValue: number;
+  resourceKeyValue!: number;
   resourceName: string = 'UserGuidance';
   resourceManagementNavPath: string = "/admin/userGuidance";
   logggedInUser: any;
   readOnlyUserName: boolean = false;
-  hideSubmitFromBranchUser: boolean;
-  imgExtensionWrong: boolean;
+  hideSubmitFromBranchUser!: boolean;
+  imgExtensionWrong!: boolean;
   inspectionTypes: any=[];
   userGuidance: any;
   
@@ -43,8 +44,8 @@ export class UserguidanceCreateComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.logggedInUser = JSON.parse(localStorage.getItem('userLoggedIn'));
-    //await this.getUserGuidance();
+    const userLoggedIn = localStorage.getItem('userLoggedIn');
+    this.logggedInUser = userLoggedIn ? JSON.parse(userLoggedIn) : null;
     if (this.route.snapshot.paramMap.get(this.resourceKey)) {
       this.route.paramMap.subscribe((params) => {
         this.resourceKeyValue = Number(params.get(this.resourceKey));
@@ -52,47 +53,43 @@ export class UserguidanceCreateComponent implements OnInit {
     }
   
     this.createForm();
-   // this.adminOnlyEdit();
-    // this.getCountries();
+  
   }
-  upload() {
-    // debugger;
+  
+  upload(): void {
     const result = new FormData();
     const media = this.logoPicker.nativeElement;
-    var currentTimeInMilliseconds = Date.now();
+    const currentTimeInMilliseconds = Date.now();
 
     if (media.files && media.files[0]) {
-      let fileName = media.files[0].name.split(" ").join("-");
-      fileName = currentTimeInMilliseconds.toString().concat("_", fileName);
-      var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
-      if (ext.toLowerCase() == 'pdf') {
-        this.imgExtensionWrong = true;
-        return false;
-      }
-      else if (ext.toLowerCase() == 'xlsx') {
-        this.imgExtensionWrong = true;
-        return false;
-      }
-      else {
-        this.imgExtensionWrong = false;
-      }
-      result.append('media', media.files[0], fileName);
-      result.append('path', "Images/UserGuidance");
+        let fileName = media.files[0].name.split(" ").join("-");
+        fileName = `${currentTimeInMilliseconds}_${fileName}`;
+        const ext = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
 
-      this.httpService.post(this.resourceUploadApi, result)
-        .subscribe((x) => {
-          this.resourceForm.controls["image"].setValue(x.path);
-        });
+        if (ext === 'pdf' || ext === 'xlsx') {
+            this.imgExtensionWrong = true;
+            return; // Simply exit the method if the extension is incorrect
+        } else {
+            this.imgExtensionWrong = false;
+        }
+
+        result.append('media', media.files[0], fileName);
+        result.append('path', "Images/UserGuidance");
+
+        this.httpService.post(this.resourceUploadApi, result)
+            .subscribe((x) => {
+                this.resourceForm.controls["image"].setValue(x.path);
+            });
     }
-  }
+}
+
  async getUserGuidance() {
-    debugger;
    return await (this.httpService.get(this.resourceGetApi)).toPromise().then(result => {
       if (result) {
         this.userGuidance = result;
         if(this.userGuidance!=null && this.userGuidance.length>0)
         {
-          this.userGuidance.forEach(pp => {
+          this.userGuidance.forEach((pp: { userGuidanceId: number; }) => {
             this.resourceKeyValue = pp.userGuidanceId;
           });
         }
@@ -147,29 +144,14 @@ export class UserguidanceCreateComponent implements OnInit {
     })
    
   }
-//  onChangeInspectionType(event: any) {
-//       this.resourceForm.controls['inspectionTypeId'].setValue(event.inspectionTypeId);
-//  }
-//   get f() { return this.resourceForm.controls; }
 
-//   adminOnlyEdit() {
-//     if (this.logggedInUser.UserType != 'A' && this.logggedInUser.UserType != 'E' && this.resourceKeyValue > 0) {
-//       this.hideSubmitFromBranchUser = true;
-//     }
-//     else {
-//       this.hideSubmitFromBranchUser = false;
-//     }
-//   }
 
 
   onSubmit() {
-     debugger;
     this.submitted = true;
     const dataToPost = this.resourceForm.value;
     dataToPost['createdBy'] = this.logggedInUser.sub;
     dataToPost['lastModifiedBy'] ="";
-    
-  console.log(dataToPost)
     if (this.resourceForm.invalid) {
       return;
     }
@@ -214,8 +196,9 @@ export class UserguidanceCreateComponent implements OnInit {
     this.router.navigate([this.resourceManagementNavPath], { replaceUrl: true });
   }
 
-  changeTextToUppercase(field) {
-    const obj = {};
+ 
+  changeTextToUppercase(field: string): void {
+    const obj: { [key: string]: any } = {};
     obj[field] = this.resourceForm.controls[field].value.toUpperCase();
     this.resourceForm.patchValue(obj);
   }

@@ -13,11 +13,11 @@ export class UsedqrcodesComponent implements OnInit {
   resourceForm: any;
   categories: any;
   selectedCategoryId: any;
-  submitted: boolean;
+  submitted: boolean = false;
   subcategories: any;
   getProductReportPath: string = '/report/usedqrcode-report-management'
   products: any;
-  sites: any[];
+  sites: any[] = [];
   constructor(private fb: FormBuilder, private router: Router, private httpService: WeftHttpService) { }
 
   ngOnInit() {
